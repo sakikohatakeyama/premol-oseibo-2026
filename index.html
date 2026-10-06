@@ -170,6 +170,20 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .eto-item .pr{font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:26px;font-variant-numeric:tabular-nums;margin-top:6px;line-height:1.2}
 .eto-item .pr small{display:inline;font-size:12px;font-weight:500;color:var(--ink)}
 
+/* ---------- PICK UP（楽天広告掲載商品：商品一覧の最上部） ---------- */
+.pickup{position:relative;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:36px;margin:0 0 40px;padding:28px 32px;background:linear-gradient(135deg,#fffaf0,#f6e8c6);border:2px solid var(--gold);text-decoration:none;box-shadow:0 18px 40px #7955291f;transition:transform .25s,box-shadow .25s}
+.pickup:hover{transform:translateY(-3px);box-shadow:0 24px 48px #79552930}
+.pickup .ribbon{position:absolute;top:-14px;left:24px;background:var(--red);color:#fff;font-weight:700;font-size:13px;letter-spacing:.18em;padding:4px 16px}
+.pickup .ph img{width:100%;aspect-ratio:1/1;object-fit:cover;box-shadow:0 12px 28px #10244333}
+.pickup .lead{font-size:13px;font-weight:700;color:#9a6a1c;letter-spacing:.08em}
+.pickup h3{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(24px,2.4vw,34px);line-height:1.45;margin:8px 0 12px}
+.pickup .tags{margin-bottom:14px}
+.pickup ul{margin:0 0 14px;padding-left:1.2em;font-size:14px;line-height:1.8}
+.pickup .note{font-size:14px;line-height:1.8;color:#4a4f5c}
+.pickup .price.tbd{display:block;margin:16px 0 4px;font-size:18px;font-weight:700;color:var(--red)}
+.pickup .btn{margin-top:16px;min-width:240px}
+.eto-item .pr.tbd{font-size:15px;color:var(--red)}
+
 /* ---------- gifts ---------- */
 .filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
 .filters button{border:1px solid #bcb4a4;background:transparent;color:var(--ink);padding:8px 18px;cursor:pointer;min-height:44px;font-size:14px}
@@ -270,6 +284,9 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .product .price{font-size:22px;margin-top:6px}
   .product .ship{font-size:11px;margin-bottom:0}
   .product .btn{grid-column:1/-1;margin-top:12px;min-height:44px}
+  .pickup{grid-template-columns:1fr;gap:16px;padding:24px 16px 20px;margin-bottom:28px}
+  .pickup h3{font-size:22px}
+  .pickup .btn{width:100%;min-width:0}
   .gold-section{padding:52px 20px 44px}
   .gold-main{grid-template-columns:1fr;gap:22px}
   .gold-section h2{font-size:30px}
@@ -431,6 +448,21 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
     <div><div class="eyebrow">CHOOSE YOUR GIFT</div><h2>あの人に似合う、<br>一箱を選ぼう。</h2></div>
     <p>定番の味、限定醸造、干支デザイン。贈りたい気持ちから選べる、冬のビールギフト。</p>
   </div>
+  <!-- ▼ PICK UP：楽天広告の掲載商品（PM6B）。価格は未定のため金額は表示しない -->
+  <a class="pickup" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">
+    <span class="ribbon">PICK UP</span>
+    <div class="ph"><img src="img/pickup-pm6b.jpg" width="600" height="600" alt="プレモル 干支デザイン 2種6缶セット PM6B（お歳暮のし付きのイメージ）" loading="lazy"></div>
+    <div>
+      <span class="lead">ビッグボスだけのオリジナルセット</span>
+      <h3>プレモル 干支デザイン<br>2種6缶セット</h3>
+      <div class="tags"><span class="tag">PM6B</span><span class="tag when">予約・2026年11月25日発売</span><span class="tag">本州送料無料</span></div>
+      <ul><li>プレミアムモルツ 干支デザイン缶 350ml × 3本</li><li>プレミアムモルツ 香るエール 干支デザイン缶 350ml × 3本</li></ul>
+      <p class="note">2027年の干支「未」をあしらった2種の迎春デザイン缶を、6缶の飲み比べに。お歳暮にも、お年賀の手土産にも。</p>
+      <span class="price tbd">特別価格は商品ページでご確認ください</span>
+      <span class="btn dark">購入はこちら</span>
+    </div>
+  </a>
+
   <div class="filters" role="group" aria-label="ギフトを絞り込む">
     <button type="button" aria-pressed="true" data-filter="all">すべて<span class="n"></span></button>
     <button type="button" aria-pressed="false" data-filter="classic">定番プレモル<span class="n"></span></button>
@@ -481,7 +513,7 @@ const products=[
  {id:'BPCK3S',cat:'eto',name:'プレモル 干支デザインセット',cans:12,spec:'350ml × 12缶',inside:'<b>干支デザイン缶12</b>',price:2966,url:'4901777423923',img:'item-bpck3s.png',w:540,h:353,tag:'お年賀にもおすすめ',when:'2026年10月27日発売',eto:'全部が干支缶'},
  {id:'BP5AG', cat:'eto',name:'サントリー 7種飲み比べセット',cans:18,spec:'350ml × 18缶',inside:'<b>干支デザイン8</b>・香るエール2・黒2・余白の贅沢2・純生2・生ビール1・東京クラフト1',price:4899,url:'4901777419131',img:'item-bp5ag.png',w:557,h:451,tag:'干支缶たっぷり',when:'2026年10月27日発売',eto:'干支缶8本'},
  {id:'BP3AG', cat:'eto',name:'サントリー 6種飲み比べセット',cans:11,spec:'350ml × 11缶',inside:'<b>干支デザイン3</b>・香るエール2・余白の贅沢2・純生2・生ビール1・東京クラフト1',price:2966,url:'4901777323834',img:'item-bp3ag.png',w:612,h:436,tag:'いろいろな味を少しずつ',when:'2026年10月27日発売',eto:'干支缶3本'},
- {id:'PM6B',  cat:'eto',name:'プレモル 2種6缶セット',cans:6,spec:'350ml × 6缶',inside:'<b>干支デザイン3・香るエール 干支デザイン3</b>',price:2398,url:'2180000000410',img:'set-pm6b.jpg',w:600,h:600,photo:true,tag:'ビッグボスのオリジナル箱',when:'2026年11月25日発売',eto:'2種の干支缶'},
+ {id:'PM6B',  cat:'eto',name:'プレモル 2種6缶セット',cans:6,spec:'350ml × 6缶',inside:'<b>干支デザイン3・香るエール 干支デザイン3</b>',price:null,priceNote:'特別価格は商品ページで',url:'2180000000410',img:'set-pm6b.jpg',w:600,h:600,photo:true,tag:'ビッグボスのオリジナル箱',when:'2026年11月25日発売',eto:'2種の干支缶'},
  {id:'FJ3S',  cat:'family',name:'プレモル ファミリーセット',cans:15,spec:'ビール9缶＋果汁6缶',inside:'プレモル5・香るエール4・なっちゃんプレミアム100（オレンジ・りんご・白ぶどう）各2',price:2966,url:'4901777271487',img:'item-fj3s.png',w:620,h:421,tag:'ご家族への贈り物に',when:'2026年10月27日発売'}
 ];
 const yen=n=>n.toLocaleString('ja-JP');
@@ -495,13 +527,13 @@ function card(p,i){
     <h3>${p.name}</h3>
     <p class="spec">${p.id} ｜ ${p.spec}</p>
     <p class="inside">${p.inside}</p>
-    ${p.price?`<p class="price">${yen(p.price)}<small>円（税込）</small></p><p class="ship">本州送料無料</p>`:'<p class="price tbd">価格は近日公開</p>'}
+    ${p.price?`<p class="price">${yen(p.price)}<small>円（税込）</small></p><p class="ship">本州送料無料</p>`:`<p class="price tbd">${p.priceNote||'価格は近日公開'}</p>`}
     ${btn}
   </article>`;
 }
 document.querySelector('#masters-grid').innerHTML=products.filter(p=>p.cat==='limited').map(card).join('');
 document.querySelector('#all-grid').innerHTML=products.map(card).join('');
-document.querySelector('#eto-row').innerHTML=products.filter(p=>p.eto).map(p=>`<a class="eto-item" href="${link(p)}" target="_blank" rel="noopener"><div class="ph${p.photo?' photo':''}"><img src="img/${p.img}" width="${p.w}" height="${p.h}" alt="${p.name} ${p.id}" loading="lazy"></div><div><span class="et">${p.eto}</span><b>${p.name}</b><small>${p.id}｜${p.spec}</small><div class="pr">${yen(p.price)}<small>円（税込）</small></div><span class="go">購入はこちら ›</span></div></a>`).join('');
+document.querySelector('#eto-row').innerHTML=products.filter(p=>p.eto).map(p=>`<a class="eto-item" href="${link(p)}" target="_blank" rel="noopener"><div class="ph${p.photo?' photo':''}"><img src="img/${p.img}" width="${p.w}" height="${p.h}" alt="${p.name} ${p.id}" loading="lazy"></div><div><span class="et">${p.eto}</span><b>${p.name}</b><small>${p.id}｜${p.spec}</small><div class="pr${p.price?'':' tbd'}">${p.price?yen(p.price)+'<small>円（税込）</small>':(p.priceNote||'価格は商品ページで')}</div><span class="go">購入はこちら ›</span></div></a>`).join('');
 
 /* FVの流れるギフト：同じ並びを複製して切れ目なくループ */
 document.querySelectorAll('.hero-art .track').forEach(t=>{[...t.children].forEach(img=>{const c=img.cloneNode();c.alt='';c.setAttribute('aria-hidden','true');t.appendChild(c)})});
@@ -552,7 +584,7 @@ applyFilter('all');
     ['.noshi-notes li','left',.12],
     ['.intro > *','up',.1],['.choice','up',.12],
     ['.feature-img','left zoom',0],['.feature > div:last-child > *','up',.1],
-    ['.chapter-head','up',0],['.product','up',.08],['.stocknote','up',0],
+    ['.chapter-head','up',0],['.pickup','up',0],['.product','up',.08],['.stocknote','up',0],
     ['.gold-main > div > *','up',.1],['.gold-main > img','right zoom',0],['.eto-item','up',.1],
     ['.filters','up',0],['.guide > div','up',.12],['.closing > *','up',.12]
   ];
