@@ -211,9 +211,11 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 /* ---------- ビッグボスの吹き出し（お店の目線で選んだ感を出す） ---------- */
 .bb-say{display:flex;gap:12px;align-items:center;margin-top:20px;text-align:left;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif}
 .bb-say img{width:60px;height:60px;flex:none}
-.bb-say p{position:relative;margin:0;background:var(--say);color:#fff!important;border:0;border-radius:14px;padding:11px 18px 12px;font-size:13.5px!important;line-height:1.8;flex:0 1 auto;font-weight:500}
-/* しっぽ（PC：左向き） */
-.bb-say p::before{content:"";position:absolute;left:-9px;top:50%;margin-top:-9px;width:0;height:0;border-style:solid;border-width:9px 10px 9px 0;border-color:transparent var(--say) transparent transparent}
+.bb-say p{position:relative;margin:0;background:#fff;color:#222!important;border:2px solid var(--say);border-radius:14px;padding:11px 18px 12px;font-size:13.5px!important;line-height:1.8;flex:0 1 auto;font-weight:500}
+/* しっぽ（PC：左向き）。::before が紺の縁、::after が白の中身 */
+.bb-say p::before,.bb-say p::after{content:"";position:absolute;top:50%;width:0;height:0;border-style:solid}
+.bb-say p::before{left:-12px;margin-top:-10px;border-width:10px 12px 10px 0;border-color:transparent var(--say) transparent transparent}
+.bb-say p::after{left:-8px;margin-top:-8px;border-width:8px 9px 8px 0;border-color:transparent #fff transparent transparent}
 .noshi-top .bb-say{max-width:560px;margin:24px auto 0}
 
 /* ---------- PICK UP（独立ブロック） ---------- */
@@ -382,8 +384,11 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .gold-main > div > p{order:4}
   .gold-main .bb-say{order:5;margin-top:0}
   .bb-say{flex-direction:column;align-items:center;gap:16px}
-  .bb-say p{order:0;padding:14px 18px 15px;font-size:14px!important;border-radius:16px}
-  .bb-say p::before{left:50%;top:auto;bottom:-10px;margin:0 0 0 -10px;border-width:10px 10px 0 10px;border-color:var(--say) transparent transparent transparent}
+  .bb-say{align-items:stretch}
+  .bb-say img{align-self:center}
+  .bb-say p{order:0;width:auto!important;padding:14px 18px 15px;font-size:14px!important;border-radius:16px;word-break:normal;text-wrap:wrap;line-break:strict}
+  .bb-say p::before{left:50%;top:auto;bottom:-13px;margin:0 0 0 -11px;border-width:12px 11px 0 11px;border-color:var(--say) transparent transparent transparent}
+  .bb-say p::after{left:50%;top:auto;bottom:-9px;margin:0 0 0 -9px;border-width:10px 9px 0 9px;border-color:#fff transparent transparent transparent}
   .bb-say img{order:1;width:76px;height:76px}
   .gold-section p{font-size:14px}
   .eto-row{grid-template-columns:1fr;gap:12px;margin-top:30px}
@@ -684,7 +689,7 @@ document.querySelector('#all-grid').innerHTML=products.map(card).join('');
 document.querySelector('#eto-row').innerHTML=products.filter(p=>p.eto).map(p=>`<a class="eto-item" href="${link(p)}" target="_blank" rel="noopener"><div class="ph${p.photo?' photo':''}"><img src="img/${p.img}" width="${p.w}" height="${p.h}" alt="${p.name} ${p.id}" loading="lazy"></div><div><span class="et">${p.eto}</span><b>${p.name}</b><small>${p.id}｜${p.spec}</small><div class="pr${p.price?'':' tbd'}">${p.price?yen(p.price)+'<small>円（税込）</small>':(p.priceNote||'価格は商品ページで')}</div><span class="go">購入はこちら ›</span></div></a>`).join('');
 
 /* 吹き出し：折り返したあと右に余白が残らないよう、いちばん長い行の幅に合わせて吹き出しを縮める */
-(()=>{const ps=[...document.querySelectorAll('.bb-say p')];function fit(){ps.forEach(p=>{p.style.width='';const r=document.createRange();r.selectNodeContents(p);let L=Infinity,Rt=-Infinity;for(const b of r.getClientRects()){if(b.width<1)continue;L=Math.min(L,b.left);Rt=Math.max(Rt,b.right)}if(Rt>L){const cs=getComputedStyle(p);const extra=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth);p.style.width=Math.ceil(Rt-L+extra+1)+'px'}})}
+(()=>{const ps=[...document.querySelectorAll('.bb-say p')];const pc=matchMedia('(min-width:761px)');function fit(){ps.forEach(p=>{p.style.width='';if(!pc.matches)return;const r=document.createRange();r.selectNodeContents(p);let L=Infinity,Rt=-Infinity;for(const b of r.getClientRects()){if(b.width<1)continue;L=Math.min(L,b.left);Rt=Math.max(Rt,b.right)}if(Rt>L){const cs=getComputedStyle(p);const extra=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth);p.style.width=Math.ceil(Rt-L+extra+1)+'px'}})}
 let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(fit,100)});addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);fit()})();
 
 /* FVの流れるギフト：同じ並びを複製して切れ目なくループ */
