@@ -46,8 +46,8 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .hero-copy,.hero-art{position:relative;z-index:1}
 /* PC：コピーの後ろのビール素材（img の src に画像を入れると表示。スマホでは非表示） */
 /* PC：切り抜きのビール（透過PNG/WebP）を左側に大きく */
-.hero-beer{position:absolute;left:9%;top:-2%;bottom:0;z-index:0;pointer-events:none;display:flex;align-items:flex-end}
-.hero-beer img{height:104%;width:auto;max-width:none;filter:drop-shadow(0 20px 40px #0009)}
+.hero-beer{position:absolute;left:14%;top:-3%;bottom:0;z-index:0;pointer-events:none;display:flex;align-items:flex-start}
+.hero-beer img{height:128%;width:auto;max-width:none;filter:drop-shadow(0 20px 40px #0009)}
 .hero-copy h1,.hero-copy p{text-shadow:0 0 22px #071529,0 0 10px #071529e6,0 2px 4px #071529}
 .hero-beer:has(img[src=""]){display:none}
 .hero .eyebrow{color:#ebcb88;margin-bottom:22px}
@@ -102,7 +102,7 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .intro .eyebrow{color:#a07831}
 .intro h2{font-size:clamp(26px,3.1vw,44px);margin:14px 0 20px;line-height:1.6}
 .intro p{font-size:16px;line-height:2.1}
-.choices{max-width:1200px;margin:0 auto 90px;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.choices{max-width:1120px;margin:0 auto 90px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .choice{text-decoration:none;display:flex;flex-direction:column;padding:24px;background:#fff;border-top:3px solid var(--gold);transition:transform .2s}
 .choice:hover{transform:translateY(-5px)}
 .choice .number{color:#b18946;font-size:13px;letter-spacing:.1em}
@@ -175,7 +175,15 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .eto-item .pr{font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:26px;font-variant-numeric:tabular-nums;margin-top:6px;line-height:1.2}
 .eto-item .pr small{display:inline;font-size:12px;font-weight:500;color:var(--ink)}
 
-/* ---------- PICK UP（楽天広告掲載商品：商品一覧の最上部） ---------- */
+/* ---------- PICK UP（独立ブロック） ---------- */
+.pickup-sec{background:linear-gradient(160deg,#0b1a36,#142c55 60%,#0b1a36);padding:84px 24px 72px}
+.pickup-inner{max-width:1120px;margin:auto}
+.pickup-head{text-align:center;color:#fff;margin-bottom:44px}
+.pickup-head .eyebrow{color:var(--gold);letter-spacing:.3em}
+.pickup-head h2{font-size:clamp(28px,3.2vw,44px);line-height:1.55;margin:12px 0 14px}
+.pickup-head p{font-size:15px;color:#d9dce6}
+.pickup-sec .pickup{margin-bottom:40px}
+.pickup-sec .pickup:last-child{margin-bottom:0}
 .pickup{position:relative;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:36px;margin:0 0 40px;padding:28px 32px;background:linear-gradient(135deg,#fffaf0,#f6e8c6);border:2px solid var(--gold);text-decoration:none;box-shadow:0 18px 40px #7955291f;transition:transform .25s,box-shadow .25s}
 .pickup:hover{transform:translateY(-3px);box-shadow:0 24px 48px #79552930}
 .pickup .ribbon{position:absolute;top:-14px;left:24px;background:var(--red);color:#fff;font-weight:700;font-size:13px;letter-spacing:.18em;padding:4px 16px}
@@ -184,7 +192,7 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .pickup .ph.cut img{width:auto;height:92%;aspect-ratio:auto;object-fit:contain;box-shadow:none;filter:drop-shadow(0 16px 18px #10244340)}
 .pickup.is-soon{cursor:default}
 .pickup.is-soon:hover{transform:none;box-shadow:0 18px 40px #7955291f}
-.pickup + .pickup{margin-top:-12px}
+
 .pickup .lead{font-size:13px;font-weight:700;color:#9a6a1c;letter-spacing:.08em}
 .pickup h3{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(24px,2.4vw,34px);line-height:1.45;margin:8px 0 12px}
 .pickup .tags{margin-bottom:14px}
@@ -222,7 +230,6 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
 
 /* ---------- tablet ---------- */
 @media(max-width:1080px){
-  .choices{grid-template-columns:repeat(2,1fr)}
   .noshi-columns{grid-template-columns:1fr;--nw:min(240px,calc((100vw - 120px) / 2))}
   .masters-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -236,7 +243,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .season{font-size:11px}
   .hero{padding:32px 20px 26px;grid-template-columns:1fr;min-height:0}
   .hero:before{right:-520px;top:-500px}
-  .hero-beer{left:auto;right:-30px;top:178px;bottom:auto;height:330px;align-items:flex-start}
+  .hero-beer{left:auto;right:-86px;top:-12px;bottom:auto;height:570px;align-items:flex-start}
   .hero-beer img{height:100%}
   .hero .eyebrow{font-size:11px;margin-bottom:14px;letter-spacing:.12em}
   .hero h1{font-size:clamp(28px,8.4vw,36px);letter-spacing:.02em;line-height:1.5}
@@ -296,7 +303,12 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .product .price{font-size:22px;margin-top:6px}
   .product .ship{font-size:11px;margin-bottom:0}
   .product .btn{grid-column:1/-1;margin-top:12px;min-height:44px}
-  .pickup{grid-template-columns:1fr;gap:16px;padding:24px 16px 20px;margin-bottom:28px}
+  .pickup-sec{padding:52px 16px 48px}
+  .pickup-head{margin-bottom:32px}
+  .pickup-head h2{font-size:25px}
+  .pickup-head p{font-size:13px}
+  .pickup{grid-template-columns:1fr;gap:16px;padding:24px 16px 20px}
+  .pickup-sec .pickup{margin-bottom:32px}
   .pickup h3{font-size:22px}
   .pickup .btn{width:100%;min-width:0}
   .gold-section{padding:52px 20px 44px}
@@ -407,6 +419,48 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   </div>
 </section>
 
+<!-- ===== PICK UP（独立ブロック：楽天広告の掲載商品を商品紹介の上部で紹介） ===== -->
+<section class="pickup-sec" id="pickup">
+  <div class="pickup-inner">
+    <div class="pickup-head">
+      <div class="eyebrow">PICK UP</div>
+      <h2>いま、イチオシの2セット。</h2>
+      <p>ビッグボスだけのオリジナル干支セットと、限定醸造をたっぷり味わうセット。</p>
+    </div>
+  <!-- ▼ PICK UP：楽天広告の掲載商品（PM6B）。価格は未定のため金額は表示しない -->
+  <a class="pickup" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">
+    <span class="ribbon">PICK UP</span>
+    <div class="ph"><img src="img/pickup-pm6b.jpg" width="600" height="600" alt="プレモル 干支デザイン 2種6缶セット PM6B（お歳暮のし付きのイメージ）" loading="lazy"></div>
+    <div>
+      <span class="lead">ビッグボスだけのオリジナルセット</span>
+      <h3>プレモル 干支デザイン<br>2種6缶セット</h3>
+      <div class="tags"><span class="tag">PM6B</span><span class="tag when">予約・2026年11月25日発売</span><span class="tag">本州送料無料</span></div>
+      <ul><li>プレミアムモルツ 干支デザイン缶 350ml × 3本</li><li>プレミアムモルツ 香るエール 干支デザイン缶 350ml × 3本</li></ul>
+      <p class="note">2027年の干支「未」をあしらった2種の迎春デザイン缶を、6缶の飲み比べに。お歳暮にも、お年賀の手土産にも。</p>
+      <span class="price tbd">特別価格は商品ページでご確認ください</span>
+      <span class="btn dark">購入はこちら</span>
+    </div>
+  </a>
+
+  <!-- ▼ PICK UP 2：DMD3S。商品ページURLが決まったら <div class="pickup is-soon"> を <a class="pickup" href="URL" target="_blank" rel="noopener"> に（閉じタグも </a> に）、
+         価格が決まったら .price の文言、ボタンを <span class="btn dark">購入はこちら</span> に変更してください -->
+  <div class="pickup is-soon">
+    <span class="ribbon">PICK UP</span>
+    <div class="ph cut"><img src="img/item-dmd3s.png" width="494" height="620" alt="「夢」マスターズドリーム ダブルセット DMD3S" loading="lazy"></div>
+    <div>
+      <span class="lead">限定醸造を、いちばんたっぷり</span>
+      <h3>「夢」マスターズドリーム<br>ダブルセット</h3>
+      <div class="tags"><span class="tag">DMD3S</span><span class="tag">350ml × 10缶</span></div>
+      <ul><li>マスターズドリーム 350ml × 5本</li><li>マスターズドリーム 水泉動 350ml × 5本</li></ul>
+      <p class="note">マスターズドリームと、限定醸造の水泉動を5本ずつ。飲み比べる時間まで贈れる、ビール好きのための一箱。</p>
+      <span class="price tbd">価格・発売日は近日公開</span>
+      <span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>
+    </div>
+  </div>
+
+  </div>
+</section>
+
 <!-- ===== 3. 贈る相手から選ぶ ===== -->
 <section class="intro">
   <div class="eyebrow">A LITTLE BETTER. A LOT OF THANKS.</div>
@@ -414,10 +468,9 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   <p>ビールが好きなあの人へ。お世話になったあの方へ。<br>気負わず贈れて、ちょっと贅沢。<br>今年は、開ける楽しみまで詰まったビールギフトを。</p>
 </section>
 <div class="choices">
-  <a class="choice pick" href="#pickup"><span class="ribbon">PICK UP</span><span class="number">01 / いまイチオシの2セット</span><h3>干支缶の飲み比べ。<br>水泉動たっぷり。</h3><p>PM6B・DMD3Sの2セット。</p><img class="photo" src="img/pickup-pm6b.jpg" width="600" height="600" alt="プレモル 干支デザイン 2種6缶セット PM6B" loading="lazy"><span class="linktext">PICK UPを見る</span></a>
-  <a class="choice" href="#gifts" data-jump="classic"><span class="number">02 / いつもの味を、贈り物に</span><h3>プレモル好きに。<br>王道の一箱。</h3><p>プレモルだけを詰めた定番セット。</p><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S" loading="lazy"><span class="linktext">定番のプレモルを選ぶ</span></a>
-  <a class="choice" href="#limited"><span class="number">03 / ビール好きの心をくすぐる</span><h3>限定醸造入り。<br>飲む楽しみを贈る。</h3><p>マスターズドリーム 水泉動も。</p><img src="img/item-vm3s.png" width="587" height="377" alt="水泉動入りプレモル5種セット VM3S" loading="lazy"><span class="linktext">限定醸造入りを選ぶ</span></a>
-  <a class="choice" href="#eto"><span class="number">04 / 新しい年のご挨拶に</span><h3>干支ラベルで、<br>晴れやかな一箱。</h3><p>お歳暮から、お年賀の手土産まで。</p><img src="img/item-bpck3s.png" width="540" height="353" alt="未年の干支デザイン缶 BPCK3S" loading="lazy"><span class="linktext">干支デザインを選ぶ</span></a>
+  <a class="choice" href="#gifts" data-jump="classic"><span class="number">01 / いつもの味を、贈り物に</span><h3>プレモル好きに。<br>王道の一箱。</h3><p>プレモルだけを詰めた定番セット。</p><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S" loading="lazy"><span class="linktext">定番のプレモルを選ぶ</span></a>
+  <a class="choice" href="#limited"><span class="number">02 / ビール好きの心をくすぐる</span><h3>限定醸造入り。<br>飲む楽しみを贈る。</h3><p>マスターズドリーム 水泉動も。</p><img src="img/item-vm3s.png" width="587" height="377" alt="水泉動入りプレモル5種セット VM3S" loading="lazy"><span class="linktext">限定醸造入りを選ぶ</span></a>
+  <a class="choice" href="#eto"><span class="number">03 / 新しい年のご挨拶に</span><h3>干支ラベルで、<br>晴れやかな一箱。</h3><p>お歳暮から、お年賀の手土産まで。</p><img src="img/item-bpck3s.png" width="540" height="353" alt="未年の干支デザイン缶 BPCK3S" loading="lazy"><span class="linktext">干支デザインを選ぶ</span></a>
 </div>
 
 <!-- ===== 4. マスターズドリーム 限定醸造 ===== -->
@@ -461,37 +514,6 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
     <div><div class="eyebrow">CHOOSE YOUR GIFT</div><h2>あの人に似合う、<br>一箱を選ぼう。</h2></div>
     <p>定番の味、限定醸造、干支デザイン。贈りたい気持ちから選べる、冬のビールギフト。</p>
   </div>
-  <!-- ▼ PICK UP：楽天広告の掲載商品（PM6B）。価格は未定のため金額は表示しない -->
-  <a class="pickup" id="pickup" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">
-    <span class="ribbon">PICK UP</span>
-    <div class="ph"><img src="img/pickup-pm6b.jpg" width="600" height="600" alt="プレモル 干支デザイン 2種6缶セット PM6B（お歳暮のし付きのイメージ）" loading="lazy"></div>
-    <div>
-      <span class="lead">ビッグボスだけのオリジナルセット</span>
-      <h3>プレモル 干支デザイン<br>2種6缶セット</h3>
-      <div class="tags"><span class="tag">PM6B</span><span class="tag when">予約・2026年11月25日発売</span><span class="tag">本州送料無料</span></div>
-      <ul><li>プレミアムモルツ 干支デザイン缶 350ml × 3本</li><li>プレミアムモルツ 香るエール 干支デザイン缶 350ml × 3本</li></ul>
-      <p class="note">2027年の干支「未」をあしらった2種の迎春デザイン缶を、6缶の飲み比べに。お歳暮にも、お年賀の手土産にも。</p>
-      <span class="price tbd">特別価格は商品ページでご確認ください</span>
-      <span class="btn dark">購入はこちら</span>
-    </div>
-  </a>
-
-  <!-- ▼ PICK UP 2：DMD3S。商品ページURLが決まったら <div class="pickup is-soon"> を <a class="pickup" href="URL" target="_blank" rel="noopener"> に（閉じタグも </a> に）、
-         価格が決まったら .price の文言、ボタンを <span class="btn dark">購入はこちら</span> に変更してください -->
-  <div class="pickup is-soon">
-    <span class="ribbon">PICK UP</span>
-    <div class="ph cut"><img src="img/item-dmd3s.png" width="494" height="620" alt="「夢」マスターズドリーム ダブルセット DMD3S" loading="lazy"></div>
-    <div>
-      <span class="lead">限定醸造を、いちばんたっぷり</span>
-      <h3>「夢」マスターズドリーム<br>ダブルセット</h3>
-      <div class="tags"><span class="tag">DMD3S</span><span class="tag">350ml × 10缶</span></div>
-      <ul><li>マスターズドリーム 350ml × 5本</li><li>マスターズドリーム 水泉動 350ml × 5本</li></ul>
-      <p class="note">マスターズドリームと、限定醸造の水泉動を5本ずつ。飲み比べる時間まで贈れる、ビール好きのための一箱。</p>
-      <span class="price tbd">価格・発売日は近日公開</span>
-      <span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>
-    </div>
-  </div>
-
   <div class="filters" role="group" aria-label="ギフトを絞り込む">
     <button type="button" aria-pressed="true" data-filter="all">すべて<span class="n"></span></button>
     <button type="button" aria-pressed="false" data-filter="classic">定番プレモル<span class="n"></span></button>
@@ -613,7 +635,7 @@ applyFilter('all');
     ['.noshi-notes li','left',.12],
     ['.intro > *','up',.1],['.choice','up',.12],
     ['.feature-img','left zoom',0],['.feature > div:last-child > *','up',.1],
-    ['.chapter-head','up',0],['.pickup','up',.12],['.product','up',.08],['.stocknote','up',0],
+    ['.chapter-head','up',0],['.pickup-head > *','up',.1],['.pickup','up',0],['.product','up',.08],['.stocknote','up',0],
     ['.gold-main > div > *','up',.1],['.gold-main > img','right zoom',0],['.eto-item','up',.1],
     ['.filters','up',0],['.guide > div','up',.12],['.closing > *','up',.12]
   ];
