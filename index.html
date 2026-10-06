@@ -44,18 +44,20 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .hero:before{content:"";position:absolute;width:860px;height:860px;border:1px solid #d3ab5850;border-radius:50%;right:-12%;top:-52%;box-shadow:0 0 0 32px #d3ab5810,0 0 0 70px #d3ab5808;pointer-events:none}
 .gold-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .hero-copy,.hero-art,.hero-meta{position:relative;z-index:1}
+/* PC：コピーの後ろのビール素材（img の src に画像を入れると表示。スマホでは非表示） */
+.hero-beer{position:absolute;left:0;top:0;bottom:0;width:58%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 45%,transparent);mask-image:linear-gradient(90deg,#000 45%,transparent)}
+.hero-beer img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.55}
+.hero-beer:has(img[src=""]){display:none}
 .hero .eyebrow{color:#ebcb88;margin-bottom:22px}
 .hero h1{font-size:clamp(36px,3.7vw,60px);font-weight:600;line-height:1.5;letter-spacing:.04em}
 .hero h1 span{color:var(--gold-l)}
 .hero h1 .w{color:#fff}
 .hero-copy p{margin:22px 0 28px;font-size:17px;line-height:2}
 /* 流れるギフト（PC：縦に流れる2列／スマホ：横に流れる2段） */
-.hero-art{display:grid;grid-template-columns:1fr 1fr;gap:26px;height:640px;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
-.lane{min-width:0}
-.track{display:flex;flex-direction:column;animation:flowY 46s linear infinite}
-.lane.b .track{animation-direction:reverse;animation-duration:52s}
-.track img{width:100%;height:auto;margin-bottom:38px;filter:drop-shadow(0 22px 20px #000b)}
-.hero-art:hover .track{animation-play-state:paused}
+.hero-art{display:flex;justify-content:center;height:660px;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
+.lane{width:min(100%,460px)}
+.track{display:flex;flex-direction:column;animation:flowY 80s linear infinite}
+.track img{width:100%;height:auto;margin-bottom:44px;filter:drop-shadow(0 22px 20px #000b)}
 @keyframes flowY{to{transform:translateY(-50%)}}
 @keyframes flowX{to{transform:translateX(-50%)}}
 .vertical{position:absolute;right:2%;top:84px;z-index:2;writing-mode:vertical-rl;letter-spacing:.2em;color:#f4d390;font-size:18px}
@@ -210,15 +212,15 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .season{font-size:11px}
   .hero{padding:32px 20px 22px;grid-template-columns:1fr}
   .hero:before{right:-520px;top:-500px}
+  .hero-beer{display:none}
   .hero .eyebrow{font-size:11px;margin-bottom:14px;letter-spacing:.12em}
   .hero h1{font-size:clamp(28px,8.4vw,36px);letter-spacing:.02em;line-height:1.5}
   .hero-copy p{font-size:14px;margin:14px 0 18px;line-height:1.9}
   .hero .btn{min-height:46px;font-size:14px;padding:10px 22px}
-  .hero-art{grid-template-columns:1fr;height:auto;gap:14px;margin:22px -20px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-  .track{flex-direction:row;width:max-content;animation-name:flowX;animation-duration:34s}
-  .lane.b .track{animation-duration:40s}
-  .track img{width:auto;height:132px;margin:0 26px 0 0}
-  .lane.b .track img{height:112px}
+  .hero-art{display:block;height:auto;margin:22px -20px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .lane{width:auto}
+  .track{flex-direction:row;width:max-content;animation-name:flowX;animation-duration:60s}
+  .track img{width:auto;height:168px;margin:0 30px 0 0}
   .vertical{display:none}
   .eyebrow{font-size:11px;letter-spacing:.14em}
   .vertical{font-size:13px}
@@ -328,6 +330,8 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 <main id="top">
 <!-- ===== 1. ヒーロー ===== -->
 <section class="hero">
+  <!-- ▼ PC用：コピーの後ろに敷くビール素材。src に画像パスを入れてください（例：img/hero-beer.jpg） -->
+  <div class="hero-beer" aria-hidden="true"><img src="" alt=""></div>
   <canvas class="gold-dust" aria-hidden="true"></canvas>
   <div class="hero-copy">
     <div class="eyebrow">THE PREMIUM MALT'S · WINTER GIFT</div>
@@ -336,8 +340,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
     <a class="btn" href="#gifts">贈るビールを選ぶ</a>
   </div>
   <div class="hero-art" aria-label="お歳暮・お年賀のギフトセット">
-    <div class="lane a"><div class="track"><img src="img/item-bp5ag.png" width="557" height="451" alt="サントリービール 7種18本セット BP5AG"><img src="img/item-vm5s.png" width="555" height="496" alt="プレモル5種セット VM5S"><img src="img/item-bpf5s.png" width="632" height="394" alt="ザ・プレミアム・モルツ BPF5S"><img src="img/item-bpck3s.png" width="540" height="353" alt="プレモル 干支デザインセット BPCK3S"><img src="img/item-dmd3s.png" width="494" height="620" alt="マスターズドリーム ダブルセット DMD3S"><img src="img/item-fj3s.png" width="620" height="421" alt="プレモル ファミリーセット FJ3S"></div></div>
-    <div class="lane b"><div class="track"><img src="img/item-vm3s.png" width="587" height="377" alt="プレモル5種セット VM3S"><img src="img/item-bp3ag.png" width="612" height="436" alt="サントリービール 6種11本セット BP3AG"><img src="img/item-bpf4s.png" width="620" height="524" alt="ザ・プレミアム・モルツ BPF4S"><img src="img/item-vm4s.png" width="571" height="417" alt="プレモル5種セット VM4S"><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S"></div></div>
+    <div class="lane"><div class="track"><img src="img/item-bp5ag.png" width="557" height="451" alt="サントリービール 7種18本セット BP5AG"><img src="img/item-vm3s.png" width="587" height="377" alt="プレモル5種セット VM3S"><img src="img/item-vm5s.png" width="555" height="496" alt="プレモル5種セット VM5S"><img src="img/item-bp3ag.png" width="612" height="436" alt="サントリービール 6種11本セット BP3AG"><img src="img/item-bpf5s.png" width="632" height="394" alt="ザ・プレミアム・モルツ BPF5S"><img src="img/item-bpf4s.png" width="620" height="524" alt="ザ・プレミアム・モルツ BPF4S"><img src="img/item-bpck3s.png" width="540" height="353" alt="プレモル 干支デザインセット BPCK3S"><img src="img/item-vm4s.png" width="571" height="417" alt="プレモル5種セット VM4S"><img src="img/item-dmd3s.png" width="494" height="620" alt="マスターズドリーム ダブルセット DMD3S"><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S"><img src="img/item-fj3s.png" width="620" height="421" alt="プレモル ファミリーセット FJ3S"></div></div>
   </div>
   <span class="vertical">お歳暮に、プレモル。</span>
   <div class="hero-meta">
