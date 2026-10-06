@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230d2144'/%3E%3Ctext x='20' y='29' text-anchor='middle' font-size='27' fill='%23e9c26c'%3EB%3C/text%3E%3C/svg%3E">
 <style>
 /* PCのメインコンテンツ幅（ヘッダーとFVは別管理） */
-:root{--cw:1000px;--blue:#102443;--deep:#071529;--gold:#d3ab58;--gold-l:#f2d89c;--paper:#faf8f2;--red:#a92b25;--ink:#182740;--sub:#6b6d71;--line:#e1dacb}
+:root{--cw:1000px;--bb-blue:#1f4ea1;--bb-red:#e1121b;--bb-cream:#fff8e2;--blue:#102443;--deep:#071529;--gold:#d3ab58;--gold-l:#f2d89c;--paper:#faf8f2;--red:#a92b25;--ink:#182740;--sub:#6b6d71;--line:#e1dacb}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{margin:0;color:var(--ink);background:var(--paper);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic",Meiryo,sans-serif;line-height:1.85;overflow-x:hidden}
@@ -115,7 +115,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .choice{text-decoration:none;display:flex;flex-direction:column;padding:24px;background:#fff;border-top:3px solid var(--gold);transition:transform .2s}
 .choice:hover{transform:translateY(-5px)}
 .choice .number{color:#b18946;font-size:13px;letter-spacing:.1em}
-.choice h3{font-size:22px;line-height:1.55;margin:8px 0 6px;font-family:"Hiragino Mincho ProN","Yu Mincho",serif}
+.choice h3{font-size:20px;line-height:1.55;margin:8px 0 6px;font-weight:800}
 .choice p{font-size:14px;color:#4a4f5c}
 .choice img{height:190px;width:100%;object-fit:contain;margin:18px 0;filter:drop-shadow(0 10px 10px #10244320)}
 .choice .linktext{margin-top:auto;display:block;border-top:1px solid #eee4d1;padding-top:12px;font-size:14px;font-weight:700}
@@ -129,7 +129,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 /* ---------- limited feature ---------- */
 .feature{position:relative;overflow:hidden;background:radial-gradient(ellipse at 22% 50%,#584128 0,transparent 55%),#141917;color:#fff;padding:96px max(24px,calc(50% - var(--cw) / 2));display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .feature .eyebrow{color:#d8bd83}
-.feature h2{font-size:clamp(32px,3.8vw,56px);font-weight:500;line-height:1.55;margin:18px 0}
+.feature h2{font-size:clamp(30px,3.4vw,46px);font-weight:500;line-height:1.55;margin:18px 0}
 .feature .reading{font-size:17px;letter-spacing:.12em;color:#d6c7a7;margin-bottom:22px}
 .feature .reading small{font-size:13px;letter-spacing:.1em}
 .feature p{font-size:16px;color:#e8e4d9}
@@ -167,7 +167,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .gold-section{background:linear-gradient(135deg,#e9d29a,#f5e8c3 52%,#d7b974);padding:84px 24px 72px}
 .gold-main{display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:48px;max-width:var(--cw);margin:auto}
 .gold-section .eyebrow{color:#725728}
-.gold-section h2{font-size:clamp(32px,3.8vw,56px);line-height:1.55;margin:14px 0 20px}
+.gold-section h2{font-size:clamp(30px,3.4vw,46px);line-height:1.55;margin:14px 0 20px}
 .gold-section p{font-size:16px}
 .gold-section .btn{margin-top:24px}
 .gold-main img{width:100%;filter:drop-shadow(0 20px 15px #79552940)}
@@ -183,6 +183,15 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .eto-item .go{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;border-bottom:1px solid currentColor}
 .eto-item .pr{font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:26px;font-variant-numeric:tabular-nums;margin-top:6px;line-height:1.2}
 .eto-item .pr small{display:inline;font-size:12px;font-weight:500;color:var(--ink)}
+
+/* ---------- ビッグボスのひとこと（お店の目線で選んだ感を出す吹き出し） ---------- */
+.bb-say{display:flex;gap:12px;align-items:flex-start;margin-top:20px;text-align:left;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif}
+.bb-say img{width:54px;height:54px;flex:none;border-radius:50%;border:2px solid var(--bb-blue);background:var(--bb-cream)}
+.bb-say p{position:relative;margin:0;background:#fff;color:var(--ink);border:2px solid var(--bb-blue);border-radius:12px;padding:9px 14px 10px;font-size:13.5px!important;line-height:1.75}
+.bb-say p::before{content:"";position:absolute;left:-9px;top:18px;width:14px;height:14px;background:#fff;border-left:2px solid var(--bb-blue);border-bottom:2px solid var(--bb-blue);transform:rotate(45deg)}
+.bb-say b{display:block;font-size:12px;color:var(--bb-blue);letter-spacing:.08em}
+.noshi-top .bb-say{max-width:560px;margin:24px auto 0}
+.bb-badge{align-self:flex-start;display:inline-block;margin-bottom:8px;background:var(--bb-blue);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;padding:3px 10px;border-radius:999px;line-height:1.5}
 
 /* ---------- PICK UP（独立ブロック） ---------- */
 .pickup-sec{background:linear-gradient(160deg,#0b1a36,#142c55 60%,#0b1a36);padding:84px 24px 72px}
@@ -203,7 +212,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .pickup.is-soon:hover{transform:none;box-shadow:0 18px 40px #7955291f}
 
 .pickup .lead{font-size:13px;font-weight:700;color:#9a6a1c;letter-spacing:.08em}
-.pickup h3{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(24px,2.4vw,34px);line-height:1.45;margin:8px 0 12px}
+.pickup h3{font-weight:800;font-size:clamp(22px,2.2vw,30px);line-height:1.45;margin:8px 0 12px}
 .pickup .tags{margin-bottom:14px}
 .pickup ul{margin:0 0 14px;padding-left:1.2em;font-size:14px;line-height:1.8}
 .pickup .note{font-size:14px;line-height:1.8;color:#4a4f5c}
@@ -288,7 +297,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .intro p{font-size:14px;line-height:2}
   .choices{grid-template-columns:1fr;margin-bottom:52px;gap:12px;padding:0 16px}
   .choice{display:grid;grid-template-columns:118px 1fr;column-gap:14px;padding:16px;align-items:center}
-  .choice img{grid-column:1;grid-row:1/4;height:100px;margin:0}
+  .choice .bb-badge{grid-column:2;justify-self:start;margin-bottom:4px}
+  .choice img{grid-column:1;grid-row:1/5;height:100px;margin:0}
   .choice .number,.choice h3,.choice p{grid-column:2}
   .choice .number{font-size:11px}
   .choice h3{font-size:18px;margin:2px 0}
@@ -387,7 +397,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   <div class="hero-stage">
   <div class="hero-beer" aria-hidden="true"><img src="img/hero-beer.webp" width="700" height="1534" alt="" fetchpriority="high"></div>
   <div class="hero-copy">
-    <div class="eyebrow">THE PREMIUM MALT'S · WINTER GIFT</div>
+    <div class="eyebrow">BIGBOSS SELECT ｜ 酒のビッグボスが選ぶ、冬のプレモル</div>
     <h1><span class="nobr w">一年のありがとうに、</span><br><span>いつもより、<br>少しいいビールを。</span></h1>
     <p><span class="pc-only">贈りたいのは、うれしい一杯。<br>お歳暮もお年賀も、今年のご挨拶はプレモルで。</span><span class="sp-only">贈りたいのは、うれしい一杯。<br>お歳暮も、お年賀も。<br>今年のご挨拶は、プレモルで。</span></p>
   </div>
@@ -408,6 +418,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
       <h2>おいしい一箱に、<br>ご挨拶の気持ちを添えて。</h2>
       <p>酒のビッグボスのオリジナルのしで、<br>一年の感謝も、新年のご挨拶も。</p>
       <div class="noshi-badges"><span class="fill">のし無料</span><span>お歳暮2種</span><span>お年賀1種</span></div>
+      <div class="bb-say"><img src="img/bigboss-face.png" width="240" height="240" alt="" loading="lazy"><p><b>ビッグボスのひとこと</b>のしはご注文時に選ぶだけ。御歳暮も御年賀も、無料でお付けします。贈り先に合わせて選んでくださいね。</p></div>
     </div>
     <div class="noshi-columns">
       <div class="noshi-block">
@@ -452,6 +463,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
       <div class="tags"><span class="tag">PM6B</span><span class="tag when">予約・2026年11月25日発売</span><span class="tag">本州送料無料</span></div>
       <ul><li>プレミアムモルツ 干支デザイン缶 350ml × 3本</li><li>プレミアムモルツ 香るエール 干支デザイン缶 350ml × 3本</li></ul>
       <p class="note">2027年の干支「未」をあしらった2種の迎春デザイン缶を、6缶の飲み比べに。お歳暮にも、お年賀の手土産にも。</p>
+      <div class="bb-say"><img src="img/bigboss-face.png" width="240" height="240" alt="" loading="lazy"><p><b>ビッグボスのひとこと</b>迎春デザインの2種を、ビッグボスで6缶のオリジナル箱にしました。かさばらないので、お年賀の手土産にもちょうどいいですよ。</p></div>
       <p class="price">2,398<small>円（税込）</small></p>
       <span class="btn dark">購入はこちら</span>
     </div>
@@ -468,6 +480,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
       <div class="tags"><span class="tag">DMD3S</span><span class="tag">350ml × 10缶</span></div>
       <ul><li>マスターズドリーム 350ml × 5本</li><li>マスターズドリーム 水泉動 350ml × 5本</li></ul>
       <p class="note">マスターズドリームと、限定醸造の水泉動を5本ずつ。飲み比べる時間まで贈れる、ビール好きのための一箱。</p>
+      <div class="bb-say"><img src="img/bigboss-face.png" width="240" height="240" alt="" loading="lazy"><p><b>ビッグボスのひとこと</b>このページのセットで、水泉動がいちばん多く入っているのがこれ。限定醸造をじっくり楽しんでほしい方に。</p></div>
       <span class="price tbd">価格・発売日は近日公開</span>
       <span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>
     </div>
@@ -483,9 +496,9 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   <p>ビールが好きなあの人へ。お世話になったあの方へ。<br>気負わず贈れて、ちょっと贅沢。<br>今年は、開ける楽しみまで詰まったビールギフトを。</p>
 </section>
 <div class="choices">
-  <a class="choice" href="#gifts" data-jump="classic"><span class="number">01 / いつもの味を、贈り物に</span><h3>プレモル好きに。<br>王道の一箱。</h3><p>プレモルだけを詰めた定番セット。</p><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S" loading="lazy"><span class="linktext">定番のプレモルを選ぶ</span></a>
-  <a class="choice" href="#limited"><span class="number">02 / ビール好きの心をくすぐる</span><h3>限定醸造入り。<br>飲む楽しみを贈る。</h3><p>マスターズドリーム 水泉動も。</p><img src="img/item-vm3s.png" width="587" height="377" alt="水泉動入りプレモル5種セット VM3S" loading="lazy"><span class="linktext">限定醸造入りを選ぶ</span></a>
-  <a class="choice" href="#eto"><span class="number">03 / 新しい年のご挨拶に</span><h3>干支ラベルで、<br>晴れやかな一箱。</h3><p>お歳暮から、お年賀の手土産まで。</p><img src="img/item-bpck3s.png" width="540" height="353" alt="未年の干支デザイン缶 BPCK3S" loading="lazy"><span class="linktext">干支デザインを選ぶ</span></a>
+  <a class="choice" href="#gifts" data-jump="classic"><span class="bb-badge">ビッグボスおすすめ</span><span class="number">01 / いつもの味を、贈り物に</span><h3>プレモル好きに。<br>王道の一箱。</h3><p>プレモルだけを詰めた定番セット。</p><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S" loading="lazy"><span class="linktext">定番のプレモルを選ぶ</span></a>
+  <a class="choice" href="#limited"><span class="bb-badge">ビッグボスおすすめ</span><span class="number">02 / ビール好きの心をくすぐる</span><h3>限定醸造入り。<br>飲む楽しみを贈る。</h3><p>マスターズドリーム 水泉動も。</p><img src="img/item-vm3s.png" width="587" height="377" alt="水泉動入りプレモル5種セット VM3S" loading="lazy"><span class="linktext">限定醸造入りを選ぶ</span></a>
+  <a class="choice" href="#eto"><span class="bb-badge">ビッグボスおすすめ</span><span class="number">03 / 新しい年のご挨拶に</span><h3>干支ラベルで、<br>晴れやかな一箱。</h3><p>お歳暮から、お年賀の手土産まで。</p><img src="img/item-bpck3s.png" width="540" height="353" alt="未年の干支デザイン缶 BPCK3S" loading="lazy"><span class="linktext">干支デザインを選ぶ</span></a>
 </div>
 
 <!-- ===== 4. マスターズドリーム 限定醸造 ===== -->
@@ -496,6 +509,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
     <h2>この冬のご挨拶に、<br>限定醸造という<br>うれしい驚きを。</h2>
     <div class="reading">マスターズドリーム 水泉動<br><small>すいせんうごく</small></div>
     <p>マスターズドリームの限定醸造を、<br>いつものプレモルと一緒に。<br>飲み比べる時間まで、贈り物にしませんか。</p>
+    <div class="bb-say"><img src="img/bigboss-face.png" width="240" height="240" alt="" loading="lazy"><p><b>ビッグボスのひとこと</b>冬ギフトなら、限定醸造入りがおすすめです。いつものプレモルと飲み比べられるのが、もらってうれしいポイント。</p></div>
   </div>
 </section>
 
@@ -515,6 +529,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
       <div class="eyebrow">NEW YEAR 2027 · YEAR OF THE SHEEP</div>
       <h2>年の終わりも、<br>年のはじまりも。<br>めでたく、プレモル。</h2>
       <p>2027年の干支「未」をあしらったデザイン缶。<br>新しい年への想いを込めた、晴れやかな贈り物。<br>お歳暮にはもちろん、お年賀にもおすすめです。</p>
+      <div class="bb-say"><img src="img/bigboss-face.png" width="240" height="240" alt="" loading="lazy"><p><b>ビッグボスのひとこと</b>年末に届いても、年明けに開けてもめでたい干支デザイン。お歳暮にもお年賀にも使えて便利です。</p></div>
     </div>
     <img src="img/item-bp5ag.png" width="557" height="451" alt="干支デザイン缶が8本入ったサントリービール 7種18本セット BP5AG" loading="lazy">
   </div>
