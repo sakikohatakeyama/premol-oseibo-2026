@@ -10,7 +10,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230d2144'/%3E%3Ctext x='20' y='29' text-anchor='middle' font-size='27' fill='%23e9c26c'%3EB%3C/text%3E%3C/svg%3E">
 <style>
 /* PCのメインコンテンツ幅（ヘッダーとFVは別管理） */
-:root{--cw:1000px;--bb-blue:#1f4ea1;--bb-red:#c50000;--bb-cream:#fff8e2;--blue:#102443;--deep:#071529;--gold:#d3ab58;--gold-l:#f2d89c;--paper:#faf8f2;--red:#c50000;--ink:#182740;--sub:#6b6d71;--line:#e1dacb}
+:root{--cw:1000px;--say:#0054a7;--bb-blue:#1f4ea1;--bb-red:#c50000;--bb-cream:#fff8e2;--blue:#102443;--deep:#071529;--gold:#d3ab58;--gold-l:#f2d89c;--paper:#faf8f2;--red:#c50000;--ink:#182740;--sub:#6b6d71;--line:#e1dacb}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{margin:0;color:var(--ink);background:var(--paper);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic",Meiryo,sans-serif;line-height:1.85;overflow-x:hidden}
@@ -210,8 +210,9 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 /* ---------- ビッグボスの吹き出し（お店の目線で選んだ感を出す） ---------- */
 .bb-say{display:flex;gap:12px;align-items:center;margin-top:20px;text-align:left;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif}
 .bb-say img{width:60px;height:60px;flex:none}
-.bb-say p{position:relative;margin:0;background:#fff;color:var(--ink);border:2px solid var(--bb-blue);border-radius:12px;padding:9px 16px 10px;font-size:13.5px!important;line-height:1.75;flex:0 1 auto}
-.bb-say p::before{content:"";position:absolute;left:-9px;top:16px;width:14px;height:14px;background:#fff;border-left:2px solid var(--bb-blue);border-bottom:2px solid var(--bb-blue);transform:rotate(45deg)}
+.bb-say p{position:relative;margin:0;background:var(--say);color:#fff!important;border:0;border-radius:14px;padding:11px 18px 12px;font-size:13.5px!important;line-height:1.8;flex:0 1 auto;font-weight:500}
+/* しっぽ（PC：左向き） */
+.bb-say p::before{content:"";position:absolute;left:-9px;top:50%;margin-top:-9px;width:0;height:0;border-style:solid;border-width:9px 10px 9px 0;border-color:transparent var(--say) transparent transparent}
 .noshi-top .bb-say{max-width:560px;margin:24px auto 0}
 
 /* ---------- PICK UP（独立ブロック） ---------- */
@@ -379,6 +380,10 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .gold-main > img{order:3;width:78%;justify-self:center}
   .gold-main > div > p{order:4}
   .gold-main .bb-say{order:5;margin-top:0}
+  .bb-say{flex-direction:column;align-items:center;gap:16px}
+  .bb-say p{order:0;padding:14px 18px 15px;font-size:14px!important;border-radius:16px}
+  .bb-say p::before{left:50%;top:auto;bottom:-10px;margin:0 0 0 -10px;border-width:10px 10px 0 10px;border-color:var(--say) transparent transparent transparent}
+  .bb-say img{order:1;width:76px;height:76px}
   .gold-section p{font-size:14px}
   .eto-row{grid-template-columns:1fr;gap:12px;margin-top:30px}
   .eto-item{grid-template-columns:46% 1fr;gap:14px;padding:14px}
