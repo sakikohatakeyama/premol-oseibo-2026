@@ -467,6 +467,14 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 /* 限定醸造ブロック：下辺をV字にして、下の商品ブロックへつなげる */
 #limited{--v:clamp(30px,4vw,80px);clip-path:polygon(0 0,100% 0,100% calc(100% - var(--v)),50% 100%,0 calc(100% - var(--v)));padding-bottom:calc(96px + var(--v))}
 @media(max-width:760px){#limited{padding-bottom:calc(52px + var(--v))}}
+/* スマホのPICK UP：ボスと吹き出しを商品画像の上に、価格の白い枠はなし */
+@media(max-width:760px){
+  .pickup{gap:0}
+  .pickup > div:last-child{display:contents}
+  .pickup .bb-say{order:-1;margin:6px 0 18px}
+  .pickup .ph{margin-bottom:16px}
+  .pickup .buy-box{margin-top:16px;padding:0;background:none;border:0;border-radius:0}
+}
 </style>
 </head>
 <body>
