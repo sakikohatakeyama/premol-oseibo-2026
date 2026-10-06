@@ -476,6 +476,13 @@ h2 .po{margin-left:-.5em}
 .to-top::before{content:"";width:9px;height:9px;border-top:2.5px solid currentColor;border-left:2.5px solid currentColor;transform:translateY(2px) rotate(45deg)}
 .to-top:hover{transform:translateY(-2px);filter:brightness(1.05)}
 @media(max-width:760px){.to-top{min-width:0;width:100%;max-width:340px;margin-bottom:28px;font-size:15px}}
+/* 3つの選び方ブロック：背景を赤に */
+.choose-wrap{background:var(--red);padding-bottom:90px}
+.choose-wrap .choices{margin-bottom:0}
+.choose-wrap .intro .eyebrow{color:#f3d48c}
+.choose-wrap .intro h2,.choose-wrap .intro p{color:#fff}
+.choose-wrap .choice{box-shadow:0 10px 24px #5a000033}
+@media(max-width:760px){.choose-wrap{padding-bottom:52px}}
 </style>
 </head>
 <body>
@@ -586,6 +593,7 @@ h2 .po{margin-left:-.5em}
 </section>
 
 <!-- ===== 3. 贈る相手から選ぶ ===== -->
+<div class="choose-wrap">
 <section class="intro">
   <div class="eyebrow">A LITTLE BETTER. A LOT OF THANKS.</div>
   <h2><span class="nobr">「好き」を知っているから、</span><br>喜ぶ一杯を贈りたい。</h2>
@@ -595,6 +603,7 @@ h2 .po{margin-left:-.5em}
   <a class="choice" href="#gifts" data-jump="classic"><span class="number">01 / いつもの味を、贈り物に</span><h3>プレモル好きに。<br>王道の一箱。</h3><p>プレモルだけを詰めた定番セット。</p><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S" loading="lazy"><span class="linktext">定番のプレモルを選ぶ</span></a>
   <a class="choice" href="#limited"><span class="number">02 / ビール好きの心をくすぐる</span><h3>限定醸造入り。<br>飲む楽しみを贈る。</h3><p>マスターズドリーム 水泉動も。</p><img src="img/item-vm3s.png" width="587" height="377" alt="水泉動入りプレモル5種セット VM3S" loading="lazy"><span class="linktext">限定醸造入りを選ぶ</span></a>
   <a class="choice" href="#eto"><span class="number">03 / 新しい年のご挨拶に</span><h3>干支ラベルで、<br>晴れやかな一箱。</h3><p>お歳暮から、お年賀の手土産まで。</p><img src="img/item-bpck3s.png" width="540" height="353" alt="未年の干支デザイン缶 BPCK3S" loading="lazy"><span class="linktext">干支デザインを選ぶ</span></a>
+</div>
 </div>
 
 <!-- ===== 4. マスターズドリーム 限定醸造 ===== -->
