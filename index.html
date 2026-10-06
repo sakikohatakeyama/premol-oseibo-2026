@@ -174,7 +174,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .product .spec{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.6}
 .product .inside{font-size:13px;margin-top:8px;line-height:1.65;color:#3c4252}
 .product .inside b{color:#9a6a1c}
-.product .price{font-size:28px;font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;letter-spacing:.01em;font-variant-numeric:tabular-nums;margin:10px 0 2px;line-height:1.3}
+.product .price{font-size:32px;font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;letter-spacing:.01em;font-variant-numeric:tabular-nums;margin:10px 0 2px;line-height:1.3}
 .product .price small{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-weight:500;font-size:12px;margin-left:2px}
 .product .price.tbd{font-size:15px;color:var(--sub);font-family:inherit}
 .product .ship{font-size:12px;color:var(--sub);margin-bottom:12px}
@@ -199,13 +199,13 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .eto-item b{display:block;font-size:17px;line-height:1.5;margin-top:8px}
 .eto-item small{display:block;font-size:12px;color:#6d5428;line-height:1.5;margin-top:2px}
 .eto-item .go{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;border-bottom:1px solid currentColor}
-.eto-item .pr{font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:26px;font-variant-numeric:tabular-nums;margin-top:6px;line-height:1.2}
+.eto-item .pr{font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;margin-top:6px;line-height:1.2}
 .eto-item .pr small{display:inline;font-size:12px;font-weight:500;color:var(--ink)}
 
 /* ---------- ビッグボスの吹き出し（お店の目線で選んだ感を出す） ---------- */
 .bb-say{display:flex;gap:12px;align-items:center;margin-top:20px;text-align:left;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif}
 .bb-say img{width:60px;height:60px;flex:none}
-.bb-say p{position:relative;margin:0;background:#fff;color:var(--ink);border:2px solid var(--bb-blue);border-radius:12px;padding:9px 14px 10px;font-size:13.5px!important;line-height:1.75}
+.bb-say p{position:relative;margin:0;background:#fff;color:var(--ink);border:2px solid var(--bb-blue);border-radius:12px;padding:9px 16px 10px;font-size:13.5px!important;line-height:1.75;flex:0 1 auto}
 .bb-say p::before{content:"";position:absolute;left:-9px;top:16px;width:14px;height:14px;background:#fff;border-left:2px solid var(--bb-blue);border-bottom:2px solid var(--bb-blue);transform:rotate(45deg)}
 .noshi-top .bb-say{max-width:560px;margin:24px auto 0}
 
@@ -233,7 +233,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .pickup ul{margin:0 0 14px;padding-left:1.2em;font-size:14px;line-height:1.8}
 .pickup .note{font-size:14px;line-height:1.8;color:#4a4f5c}
 .pickup .price.tbd{display:block;margin:16px 0 4px;font-size:18px;font-weight:700;color:var(--red)}
-.pickup .price:not(.tbd){margin:16px 0 0;font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:34px;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--ink)}
+.pickup .price:not(.tbd){margin:16px 0 0;font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:40px;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--ink)}
 .pickup .price:not(.tbd) small{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;font-weight:500;margin-left:3px}
 .pickup .btn{margin-top:16px;min-width:240px}
 .pickup .btn-row{margin-top:16px}
@@ -343,7 +343,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .product h3,.product .spec,.product .inside,.product .price,.product .ship{grid-column:2}
   .product h3{font-size:15px}
   .product .spec,.product .inside{font-size:12px;margin-top:2px}
-  .product .price{font-size:22px;margin-top:6px}
+  .product .price{font-size:26px;margin-top:6px}
   .product .ship{font-size:11px;margin-bottom:0}
   .product .btn{grid-column:1/-1;margin-top:12px;min-height:44px}
   .product .btn-row{grid-column:1/-1;margin-top:12px}
@@ -366,7 +366,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .eto-row{grid-template-columns:1fr;gap:12px;margin-top:30px}
   .eto-item{grid-template-columns:46% 1fr;gap:14px;padding:14px}
   .eto-item b{font-size:15px;margin-top:6px}
-  .eto-item .pr{font-size:22px}
+  .eto-item .pr{font-size:25px}
   .filters{gap:8px}
   .filters button{flex:1 0 30%;padding:6px 8px;font-size:13px;min-height:42px}
   .guide{grid-template-columns:1fr;gap:20px;margin-top:36px;padding-top:28px}
@@ -659,6 +659,10 @@ function card(p,i){
 document.querySelector('#masters-grid').innerHTML=products.filter(p=>p.cat==='limited').map(card).join('');
 document.querySelector('#all-grid').innerHTML=products.map(card).join('');
 document.querySelector('#eto-row').innerHTML=products.filter(p=>p.eto).map(p=>`<a class="eto-item" href="${link(p)}" target="_blank" rel="noopener"><div class="ph${p.photo?' photo':''}"><img src="img/${p.img}" width="${p.w}" height="${p.h}" alt="${p.name} ${p.id}" loading="lazy"></div><div><span class="et">${p.eto}</span><b>${p.name}</b><small>${p.id}｜${p.spec}</small><div class="pr${p.price?'':' tbd'}">${p.price?yen(p.price)+'<small>円（税込）</small>':(p.priceNote||'価格は商品ページで')}</div><span class="go">購入はこちら ›</span></div></a>`).join('');
+
+/* 吹き出し：折り返したあと右に余白が残らないよう、いちばん長い行の幅に合わせて吹き出しを縮める */
+(()=>{const ps=[...document.querySelectorAll('.bb-say p')];function fit(){ps.forEach(p=>{p.style.width='';const r=document.createRange();r.selectNodeContents(p);let L=Infinity,Rt=-Infinity;for(const b of r.getClientRects()){if(b.width<1)continue;L=Math.min(L,b.left);Rt=Math.max(Rt,b.right)}if(Rt>L){const cs=getComputedStyle(p);const extra=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth);p.style.width=Math.ceil(Rt-L+extra+1)+'px'}})}
+let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(fit,100)});addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);fit()})();
 
 /* FVの流れるギフト：同じ並びを複製して切れ目なくループ */
 document.querySelectorAll('.hero-art .track').forEach(t=>{[...t.children].forEach(img=>{const c=img.cloneNode();c.alt='';c.setAttribute('aria-hidden','true');t.appendChild(c)})});
