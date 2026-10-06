@@ -464,6 +464,9 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   .lane,.track{height:100%}
   .track img{height:92%;width:auto;margin:0 18px 0 0;align-self:center}
 }
+/* 限定醸造ブロック：下辺をV字にして、下の商品ブロックへつなげる */
+#limited{--v:clamp(30px,4vw,80px);clip-path:polygon(0 0,100% 0,100% calc(100% - var(--v)),50% 100%,0 calc(100% - var(--v)));padding-bottom:calc(96px + var(--v))}
+@media(max-width:760px){#limited{padding-bottom:calc(52px + var(--v))}}
 </style>
 </head>
 <body>
@@ -603,7 +606,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 
 <section class="chapter" id="masters-products">
   <div class="chapter-head">
-    <div><div class="eyebrow">LIMITED BREW SELECTION</div><h2>水泉動、1本から5本まで。<br>ボリュームで選べる4セット。</h2></div>
+    <div><h2>水泉動、1本から5本まで。<br>ボリュームで選べる4セット。</h2></div>
     <p>プレモル・香るエール・黒・マスターズドリーム・水泉動の5種セットと、マスターズドリームを味わうダブルセット。</p>
   </div>
   <div class="grid masters-grid" id="masters-grid"></div>
