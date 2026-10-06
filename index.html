@@ -40,13 +40,15 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .season{font-size:13px;letter-spacing:.1em}
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 76% 75%,#89632e 0,transparent 42%),linear-gradient(120deg,#081526,#162f56 68%,#082147);color:#fff;padding:64px 6% 40px;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;column-gap:4%}
+.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 76% 75%,#89632e 0,transparent 42%),linear-gradient(120deg,#081526,#162f56 68%,#082147);color:#fff;padding:64px 10% 40px;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;column-gap:4%}
 .hero:before{content:"";position:absolute;width:860px;height:860px;border:1px solid #d3ab5850;border-radius:50%;right:-12%;top:-52%;box-shadow:0 0 0 32px #d3ab5810,0 0 0 70px #d3ab5808;pointer-events:none}
 .gold-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .hero-copy,.hero-art,.hero-meta{position:relative;z-index:1}
 /* PC：コピーの後ろのビール素材（img の src に画像を入れると表示。スマホでは非表示） */
-.hero-beer{position:absolute;left:0;top:0;bottom:0;width:58%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 45%,transparent);mask-image:linear-gradient(90deg,#000 45%,transparent)}
-.hero-beer img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.55}
+.hero-beer{position:absolute;left:0;top:0;bottom:0;width:62%;z-index:0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000 50%,transparent);mask-image:linear-gradient(90deg,#000 50%,transparent)}
+.hero-beer img{width:100%;height:100%;object-fit:cover;object-position:20% center;opacity:.62}
+.hero-beer::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#08152699 0%,#0815264d 55%,transparent)}
+.hero-copy h1,.hero-copy p{text-shadow:0 2px 18px #071529cc,0 1px 3px #071529b3}
 .hero-beer:has(img[src=""]){display:none}
 .hero .eyebrow{color:#ebcb88;margin-bottom:22px}
 .hero h1{font-size:clamp(36px,3.7vw,60px);font-weight:600;line-height:1.5;letter-spacing:.04em}
@@ -60,7 +62,7 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .track img{width:100%;height:auto;margin-bottom:44px;filter:drop-shadow(0 22px 20px #000b)}
 @keyframes flowY{to{transform:translateY(-50%)}}
 @keyframes flowX{to{transform:translateX(-50%)}}
-.vertical{position:absolute;right:2%;top:84px;z-index:2;writing-mode:vertical-rl;letter-spacing:.2em;color:#f4d390;font-size:18px}
+.vertical{position:absolute;right:5.5%;top:84px;z-index:2;writing-mode:vertical-rl;letter-spacing:.2em;color:#f4d390;font-size:18px}
 .hero-meta{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px;border-top:1px solid #dabd8040}
 .hero-meta a{display:flex;flex-direction:column;gap:2px;padding:16px 4px 0;text-decoration:none;font-size:15px;letter-spacing:.06em}
 .hero-meta a small{font-size:12px;color:#c9c3b1;letter-spacing:.04em}
@@ -84,15 +86,15 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .noshi-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}
 .noshi-badges span{border:1px solid var(--red);color:var(--red);font-weight:700;font-size:14px;padding:4px 16px}
 .noshi-badges span.fill{background:var(--red);color:#fff}
-.noshi-columns{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;margin-top:44px;align-items:stretch}
-.noshi-block{padding:32px;border-top:3px solid var(--red);background:#faf8f3}
+.noshi-columns{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;align-items:stretch}
+.noshi-block{padding:32px 28px;border-top:3px solid var(--red);background:#faf8f3;text-align:center;display:flex;flex-direction:column;align-items:center}
 .noshi-kind{font-size:40px;color:var(--red);letter-spacing:.18em;line-height:1.3}
 .noshi-block h3{font-size:18px;margin:14px 0 10px;line-height:1.6}
 .noshi-block p{font-size:15px}
 /* のし画像は3枚とも同じ幅（--nw）にそろえる */
-.noshi-columns{--nw:236px}
-.noshi-pair{display:grid;grid-template-columns:repeat(2,var(--nw));gap:16px;margin-top:22px;justify-content:start}
-.noshi-one{width:var(--nw);margin-top:22px}
+.noshi-columns{--nw:212px}
+.noshi-pair{display:grid;grid-template-columns:repeat(2,var(--nw));gap:16px;margin-top:auto;padding-top:22px;justify-content:center}
+.noshi-one{width:var(--nw);margin-top:auto;padding-top:22px}
 .noshi-block img{width:100%;border:1px solid #e8decd;box-shadow:0 8px 20px #1024430f;background:#fff}
 .noshi-block figcaption{text-align:center;font-size:13px;color:#746751;margin-top:8px}
 .noshi-notes{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -159,16 +161,18 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .gold-section p{font-size:16px}
 .gold-section .btn{margin-top:24px}
 .gold-main img{width:100%;filter:drop-shadow(0 20px 15px #79552940)}
-.eto-row{max-width:1240px;margin:52px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.eto-item{display:grid;grid-template-columns:44% 1fr;gap:10px;align-items:center;background:#fffaf0cc;padding:12px;text-decoration:none;border:1px solid #d9bd7c;transition:transform .2s}
+.eto-row{max-width:1080px;margin:56px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.eto-item{display:grid;grid-template-columns:52% 1fr;gap:22px;align-items:center;background:#fffaf0e6;padding:20px 24px 20px 16px;box-shadow:0 10px 26px #79552926;text-decoration:none;border:1px solid #d9bd7c;transition:transform .2s}
 .eto-item:hover{transform:translateY(-3px)}
 .eto-item .ph{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
 .eto-item .ph img{max-height:100%;width:auto;object-fit:contain}
 .eto-item .ph.photo img{width:100%;height:100%;object-fit:cover}
-.eto-item b{display:block;font-size:14px;line-height:1.45}
-.eto-item small{display:block;font-size:12px;color:#6d5428;line-height:1.5}
-.eto-item .pr{font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:19px;font-variant-numeric:tabular-nums;margin-top:2px}
-.eto-item .pr small{display:inline}
+.eto-item .et{display:inline-block;background:var(--red);color:#fff;font-size:12px;font-weight:700;padding:2px 10px;letter-spacing:.06em}
+.eto-item b{display:block;font-size:17px;line-height:1.5;margin-top:8px}
+.eto-item small{display:block;font-size:12px;color:#6d5428;line-height:1.5;margin-top:2px}
+.eto-item .go{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;border-bottom:1px solid currentColor}
+.eto-item .pr{font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:26px;font-variant-numeric:tabular-nums;margin-top:6px;line-height:1.2}
+.eto-item .pr small{display:inline;font-size:12px;font-weight:500;color:var(--ink)}
 
 /* ---------- gifts ---------- */
 .filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
@@ -194,13 +198,12 @@ footer{background:var(--deep);color:#b4becc;padding:32px 6%;font-size:12px}
 .floating{display:none}
 a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48722;outline-offset:3px}
 
-@media(min-width:1500px){.hero{padding-left:calc((100vw - 1320px)/2);padding-right:calc((100vw - 1320px)/2)}}
+@media(min-width:1500px){.hero{padding-left:calc((100vw - 1200px)/2);padding-right:calc((100vw - 1200px)/2)}.vertical{right:calc((100vw - 1200px)/2 - 48px)}}
 
 /* ---------- tablet ---------- */
 @media(max-width:1080px){
-  .noshi-columns{grid-template-columns:1fr;--nw:min(260px,calc((100vw - 128px) / 2))}
+  .noshi-columns{grid-template-columns:1fr;--nw:min(240px,calc((100vw - 120px) / 2))}
   .masters-grid{grid-template-columns:repeat(2,1fr)}
-  .eto-row{grid-template-columns:repeat(2,1fr)}
 }
 
 /* ---------- smartphone ---------- */
@@ -241,8 +244,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .noshi-block h3{font-size:16px}
   .noshi-block p{font-size:14px}
   .noshi-columns{--nw:calc((100vw - 86px) / 2)}
-  .noshi-pair{gap:10px;margin-top:16px}
-  .noshi-one{margin-top:16px}
+  .noshi-pair{gap:10px;margin-top:0;padding-top:16px}
+  .noshi-one{margin-top:0;padding-top:16px}
   .noshi-notes{grid-template-columns:1fr;gap:12px;margin-top:22px}
   .intro{padding:52px 20px 30px}
   .intro h2{font-size:23px}
@@ -279,8 +282,10 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .gold-main{grid-template-columns:1fr;gap:22px}
   .gold-section h2{font-size:30px}
   .gold-section p{font-size:14px}
-  .eto-row{grid-template-columns:1fr;gap:10px;margin-top:30px}
-  .eto-item{grid-template-columns:38% 1fr}
+  .eto-row{grid-template-columns:1fr;gap:12px;margin-top:30px}
+  .eto-item{grid-template-columns:46% 1fr;gap:14px;padding:14px}
+  .eto-item b{font-size:15px;margin-top:6px}
+  .eto-item .pr{font-size:22px}
   .filters{gap:8px}
   .filters button{flex:1 0 30%;padding:6px 8px;font-size:13px;min-height:42px}
   .guide{grid-template-columns:1fr;gap:20px;margin-top:36px;padding-top:28px}
@@ -331,7 +336,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 <!-- ===== 1. ヒーロー ===== -->
 <section class="hero">
   <!-- ▼ PC用：コピーの後ろに敷くビール素材。src に画像パスを入れてください（例：img/hero-beer.jpg） -->
-  <div class="hero-beer" aria-hidden="true"><img src="" alt=""></div>
+  <div class="hero-beer" aria-hidden="true"><img src="img/hero-beer.jpg" width="1600" height="1066" alt="" fetchpriority="high"></div>
   <canvas class="gold-dust" aria-hidden="true"></canvas>
   <div class="hero-copy">
     <div class="eyebrow">THE PREMIUM MALT'S · WINTER GIFT</div>
@@ -509,7 +514,7 @@ function card(p,i){
 }
 document.querySelector('#masters-grid').innerHTML=products.filter(p=>p.cat==='limited').map(card).join('');
 document.querySelector('#all-grid').innerHTML=products.map(card).join('');
-document.querySelector('#eto-row').innerHTML=products.filter(p=>p.eto).map(p=>`<a class="eto-item" href="${link(p)}" target="_blank" rel="noopener"><div class="ph${p.photo?' photo':''}"><img src="img/${p.img}" width="${p.w}" height="${p.h}" alt="${p.name} ${p.id}" loading="lazy"></div><div><small>${p.id}｜${p.cans}缶</small><b>${p.eto}</b><div class="pr">${yen(p.price)}<small>円</small></div></div></a>`).join('');
+document.querySelector('#eto-row').innerHTML=products.filter(p=>p.eto).map(p=>`<a class="eto-item" href="${link(p)}" target="_blank" rel="noopener"><div class="ph${p.photo?' photo':''}"><img src="img/${p.img}" width="${p.w}" height="${p.h}" alt="${p.name} ${p.id}" loading="lazy"></div><div><span class="et">${p.eto}</span><b>${p.name}</b><small>${p.id}｜${p.spec}</small><div class="pr">${yen(p.price)}<small>円（税込）</small></div><span class="go">購入はこちら ›</span></div></a>`).join('');
 
 /* FVの流れるギフト：同じ並びを複製して切れ目なくループ */
 document.querySelectorAll('.hero-art .track').forEach(t=>{[...t.children].forEach(img=>{const c=img.cloneNode();c.alt='';c.setAttribute('aria-hidden','true');t.appendChild(c)})});
