@@ -381,7 +381,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .gold-section{padding:52px 20px 44px}
   .gold-main{grid-template-columns:1fr;gap:22px}
   .gold-section h2{font-size:min(27px,7.2vw)}
-  .gold-main > div{display:contents}
+  .gold-main > div:not(.eto-cans){display:contents}
   .gold-main .eyebrow{order:1;text-align:center}
   .gold-section h2{order:2;text-align:center;margin:-8px 0 0}
   .gold-main > img{order:3;width:78%;justify-self:center}
@@ -489,9 +489,12 @@ h2 .po{margin-left:-.5em}
 .eto-item{background:#fffaf0;box-shadow:0 10px 26px #3a000040}
 @media(max-width:760px){.choose-wrap{padding-bottom:52px}}
 /* 干支ブロック：PCの商品画像を小さめに */
-@media(min-width:761px){.gold-main > img{width:78%;justify-self:center}}
-/* 干支ブロック：見出し横の写真（背景つきの写真なので角丸＋影） */
-.gold-main > img.eto-photo{filter:none;border-radius:14px;box-shadow:0 18px 36px #3a000059;border:3px solid #f3d48c}
+/* 干支ブロック：見出し横の干支缶2本（切り抜き） */
+.eto-cans{display:flex;justify-content:center;align-items:flex-end;gap:4%}
+.eto-cans img{width:36%;height:auto;filter:drop-shadow(0 18px 16px #3a000066)}
+.eto-cans img:first-child{transform:rotate(-4deg)}
+.eto-cans img:last-child{transform:rotate(4deg)}
+@media(max-width:760px){.gold-main > .eto-cans{order:3}.eto-cans img{width:38%}}
 </style>
 </head>
 <body>
@@ -645,7 +648,7 @@ h2 .po{margin-left:-.5em}
       <p>2027年の干支「未」をあしらったデザイン缶。<br>新しい年への想いを込めた、晴れやかな贈り物。<br>お歳暮にはもちろん、お年賀にもおすすめです。</p>
       <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>年末に届いても、年明けに開けてもめでたい干支デザイン。お歳暮にもお年賀にも使えて便利です。</p></div>
     </div>
-    <img class="eto-photo" src="img/eto-cans-2027.jpg" width="600" height="600" alt="ザ・プレミアム・モルツ 干支デザイン缶と香るエール 干支デザイン缶（2027年 未）" loading="lazy">
+    <div class="eto-cans"><img src="img/can-eto-premol.webp" width="631" height="1191" alt="ザ・プレミアム・モルツ 干支デザイン缶（2027年 未）" loading="lazy"><img src="img/can-eto-kaoru.webp" width="631" height="1188" alt="ザ・プレミアム・モルツ 香るエール 干支デザイン缶（2027年 未）" loading="lazy"></div>
   </div>
   <div class="eto-row" id="eto-row"></div>
 </section>
@@ -789,7 +792,7 @@ applyFilter('all');
     ['.intro > *','up',.1],['.choice','up',.12],
     ['.feature-img','left zoom',0],['.feature > div:last-child > *','up',.1],
     ['.chapter-head','up',0],['.pickup-head > *','up',.1],['.pickup','up',0],['.product','up',.08],['.stocknote','up',0],
-    ['.gold-main > div > *','up',.1],['.gold-main > img','right zoom',0],['.eto-item','up',.1],
+    ['.gold-main > div > *','up',.1],['.gold-main > .eto-cans','right zoom',0],['.eto-item','up',.1],
     ['.filters','up',0],['.guide > div','up',.12],['.closing > *','up',.12]
   ];
   const targets=[];
