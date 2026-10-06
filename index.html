@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ja">
+<script>document.documentElement.classList.add('js')</script>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -277,6 +278,39 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .floating .btn{min-height:40px;font-size:13px;padding:6px 18px;white-space:nowrap}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.gold-dust{display:none}}
+
+/* ---------- スクロール演出 ---------- */
+/* JSが動いたときだけ初期状態を隠す（JSが無効でも内容は見える） */
+html.js .rv{opacity:0;transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s;transition-delay:var(--d,0s);will-change:opacity,transform}
+html.js .rv.up{transform:translateY(34px)}
+html.js .rv.left{transform:translateX(-48px)}
+html.js .rv.right{transform:translateX(48px)}
+html.js .rv.zoom{transform:scale(.9);filter:blur(4px)}
+html.js .rv.place{transform:translateY(26px) rotate(-4deg) scale(.96)}
+html.js .rv.place.r{transform:translateY(26px) rotate(4deg) scale(.96)}
+html.js .rv.pop{transform:scale(.6)}
+html.js .rv.line{transform:scaleX(0);transform-origin:left}
+html.js .rv.in{opacity:1!important;transform:none!important;filter:none!important}
+/* ヒーロー：読み込み時に順番に表示 */
+html.js .hero .ld{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+html.js .hero .ld.rise{transform:translateY(70px)}
+html.js .hero.loaded .ld{opacity:1;transform:none}
+.hero-art .pm,.hero-art .md{animation:floaty 6s ease-in-out infinite}
+.hero-art .md{animation-delay:-3s}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -10px}}
+/* 見出しの金色ライン */
+.sweep{position:relative;display:inline-block}
+.sweep::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:100%;background:linear-gradient(90deg,var(--gold),#f4dc9e,var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.7,.2,1) .35s}
+.sweep.in::after{transform:scaleX(1)}
+/* 光が走るボタン・バッジ */
+.shine{position:relative;overflow:hidden}
+.shine::before{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,#ffffff8c,transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%,65%{left:-60%}100%{left:130%}}
+/* 商品画像：ホバーで少し持ち上がる */
+.product .ph img,.choice img,.eto-item .ph img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.product:hover .ph img,.choice:hover img,.eto-item:hover .ph img{transform:translateY(-6px) scale(1.03)}
+.parallax{will-change:transform}
+@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ld{opacity:1!important;transform:none!important;filter:none!important}.hero-art .pm,.hero-art .md,.shine::before{animation:none}.sweep::after{transform:scaleX(1)}}
 </style>
 </head>
 <body>
@@ -492,6 +526,64 @@ document.querySelector('#sort').addEventListener('change',e=>{
   }).forEach(c=>grid.appendChild(c));
 });
 applyFilter('all');
+
+/* スクロール演出：要素に動きの種類を付けて、画面に入ったら表示 */
+(()=>{
+  const mq=matchMedia('(prefers-reduced-motion: reduce)');
+  const hero=document.querySelector('.hero');
+  // ヒーロー：読み込み時の順番表示
+  [['.hero .eyebrow',''],['.hero h1',''],['.hero-copy p',''],['.hero-copy .btn',''],['.hero-art .pm','rise'],['.hero-art .md','rise'],['.hero .vertical',''],['.hero-meta a','']].forEach(([sel,k],i)=>{
+    document.querySelectorAll(sel).forEach((el,j)=>{el.classList.add('ld');if(k)el.classList.add(k);el.style.setProperty('--d',(i*.12+j*.1)+'s')});
+  });
+  const showHero=()=>hero.classList.add('loaded');
+  requestAnimationFrame(()=>requestAnimationFrame(showHero));
+  setTimeout(showHero,300); // 念のため（rAFが止まっている環境でも必ず表示）
+  // スクロールで表示する要素と動きの種類（stagger＝順番にずらす）
+  const plan=[
+    ['.noshi-top > *','up',.1],['.noshi-badges span','pop',.12],['.noshi-block','up',.15],
+    ['.noshi-pair figure:nth-child(1), .noshi-one','place',.2],['.noshi-pair figure:nth-child(2)','place r',.2],
+    ['.noshi-notes li','left',.12],
+    ['.intro > *','up',.1],['.choice','up',.12],
+    ['.feature-img','left zoom',0],['.feature > div:last-child > *','up',.1],
+    ['.chapter-head','up',0],['.product','up',.08],['.stocknote','up',0],
+    ['.gold-main > div > *','up',.1],['.gold-main > img','right zoom',0],['.eto-item','up',.1],
+    ['.filters','up',0],['.guide > div','up',.12],['.closing > *','up',.12]
+  ];
+  const targets=[];
+  plan.forEach(([sel,kind,step])=>{
+    const groups=new Map();
+    document.querySelectorAll(sel).forEach(el=>{
+      const parent=el.parentElement;const n=groups.get(parent)||0;groups.set(parent,n+1);
+      el.classList.add('rv',...kind.split(' '));
+      // 商品カードは1行ぶん（最大4枚）ずつずらす
+      const idx=el.classList.contains('product')?n%4:n;
+      el.style.setProperty('--d',(idx*step)+'s');
+      targets.push(el);
+    });
+  });
+  // 見出しに金のライン
+  document.querySelectorAll('.noshi-kind').forEach(el=>{el.classList.add('sweep');targets.push(el)});
+  // 光が走る
+  document.querySelectorAll('.noshi-badges .fill, .hero-copy .btn, .floating .btn').forEach(el=>el.classList.add('shine'));
+  if(mq.matches||!('IntersectionObserver' in window)){targets.forEach(el=>el.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px',threshold:.08});
+  targets.forEach(el=>io.observe(el));
+  // 絞り込み・並び替えで出てきたカードはすぐ表示
+  document.querySelectorAll('.filters button, #sort, [data-jump]').forEach(b=>b.addEventListener(b.tagName==='SELECT'?'change':'click',()=>{document.querySelectorAll('#all-grid .product').forEach(c=>{c.style.setProperty('--d','0s');c.classList.add('in')})}));
+  // ゆるやかな視差（ヒーローの缶・限定醸造の缶）
+  const par=[[document.querySelector('.hero-art'),-.08],[document.querySelector('.feature-img img'),-.06]].filter(x=>x[0]);
+  par.forEach(([el])=>el.classList.add('parallax'));
+  let tick=false;
+  function onScroll(){
+    if(tick)return;tick=true;
+    requestAnimationFrame(()=>{
+      const vh=innerHeight;
+      par.forEach(([el,k])=>{const r=el.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;const c=r.top+r.height/2-vh/2;el.style.transform=`translate3d(0,${(c*k).toFixed(1)}px,0)`});
+      tick=false;
+    });
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
 
 /* 金粉（ヒーロー内のみ） */
 (()=>{const c=document.querySelector('.gold-dust'),ctx=c.getContext('2d'),hero=c.parentElement,mq=matchMedia('(prefers-reduced-motion: reduce)');let w=0,h=0,flakes=[],frame=0,last=0,visible=true;function resize(){w=hero.clientWidth;h=hero.clientHeight;const d=Math.min(devicePixelRatio||1,2);c.width=w*d;c.height=h*d;ctx.setTransform(d,0,0,d,0,0);flakes=Array.from({length:w<760?23:48},()=>({x:Math.random()*w,y:Math.random()*h,s:1+Math.random()*3,v:11+Math.random()*19,t:Math.random()*6.28,r:Math.random()*3,a:.15+Math.random()*.45}));}function draw(t){frame=0;if(mq.matches||document.hidden||!visible){last=0;return}let dt=last?Math.min((t-last)/1000,.06):0;last=t;ctx.clearRect(0,0,w,h);for(const f of flakes){f.y+=f.v*dt;f.t+=dt*.6;f.r+=dt*.3;if(f.y>h+8){f.y=-8;f.x=Math.random()*w}ctx.save();ctx.translate(f.x+Math.sin(f.t)*12,f.y);ctx.rotate(f.r);ctx.globalAlpha=f.a*(.75+.25*Math.sin(f.t*2));ctx.fillStyle='#ebcb78';ctx.beginPath();ctx.moveTo(-f.s,-f.s*.6);ctx.lineTo(f.s*.8,-f.s);ctx.lineTo(f.s,f.s*.5);ctx.lineTo(-f.s*.6,f.s);ctx.closePath();ctx.fill();ctx.restore()}frame=requestAnimationFrame(draw)}function resume(){if(!frame&&!mq.matches&&!document.hidden&&visible)frame=requestAnimationFrame(draw)}new ResizeObserver(()=>{resize();resume()}).observe(hero);new IntersectionObserver(e=>{visible=e[0].isIntersecting;resume()}).observe(hero);document.addEventListener('visibilitychange',resume);mq.addEventListener('change',()=>{ctx.clearRect(0,0,w,h);resume()});resize();resume()})();
