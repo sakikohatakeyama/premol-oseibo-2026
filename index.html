@@ -181,7 +181,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .product .inside{font-size:13px;margin-top:8px;line-height:1.65;color:#3c4252}
 .product .inside b{color:#9a6a1c}
 .product .price{font-size:32px;font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;letter-spacing:.01em;font-variant-numeric:tabular-nums;margin:10px 0 2px;line-height:1.3}
-.product .price small{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-weight:500;font-size:12px;margin-left:2px}
+.product .price small{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-weight:500;font-size:15px;margin-left:2px}
 .product .price.tbd{font-size:15px;color:var(--sub);font-family:inherit}
 .product .ship{font-size:12px;color:var(--sub);margin-bottom:12px}
 .product .btn{margin-top:auto;padding:8px 10px;min-height:40px;font-size:13px}
@@ -206,7 +206,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .eto-item small{display:block;font-size:12px;color:#6d5428;line-height:1.5;margin-top:2px}
 .eto-item .go{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;border-bottom:1px solid currentColor}
 .eto-item .pr{font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;margin-top:6px;line-height:1.2}
-.eto-item .pr small{display:inline;font-size:12px;font-weight:500;color:var(--ink)}
+.eto-item .pr small{display:inline;font-size:14px;font-weight:500;color:var(--ink)}
 
 /* ---------- ビッグボスの吹き出し（お店の目線で選んだ感を出す） ---------- */
 .bb-say{display:flex;gap:12px;align-items:center;margin-top:20px;text-align:left;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif}
@@ -243,8 +243,16 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .pickup .note{font-size:14px;line-height:1.8;color:#4a4f5c}
 .pickup .price.tbd{display:block;margin:16px 0 4px;font-size:18px;font-weight:700;color:var(--red)}
 .pickup .price:not(.tbd){margin:16px 0 0;font-family:"Helvetica Neue",Arial,"Hiragino Sans",sans-serif;font-weight:700;font-size:40px;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--ink)}
-.pickup .price:not(.tbd) small{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;font-weight:500;margin-left:3px}
+.pickup .price:not(.tbd) small{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:17px;font-weight:500;margin-left:3px}
 .pickup .btn{margin-top:16px;min-width:240px}
+.pickup .buy-box{margin-top:22px;padding:16px 18px 18px;background:#fff;border:1px solid #e3cf9f;border-radius:12px}
+.pickup .price-line{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px dashed #e3cf9f}
+.price .q{font-size:.66em;letter-spacing:.02em;vertical-align:.08em}
+.pickup .price,.product .price{white-space:nowrap}
+.pickup .pl{white-space:nowrap;font-size:13px;font-weight:700;color:#9a6a1c;letter-spacing:.08em}
+.pickup .buy-box .price:not(.tbd){margin:0;font-size:36px;line-height:1.1}
+.pickup .buy-box .btn-row,.pickup .buy-box .btn{margin-top:14px}
+.pickup .buy-box > .btn{width:100%}
 .pickup .btn-row{margin-top:16px}
 .pickup .btn-row .btn{margin-top:0;min-width:0}
 .pickup .btn-row .buy{flex:0 1 240px}
@@ -540,13 +548,15 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
       <ul><li>プレミアムモルツ 干支デザイン缶 350ml × 3本</li><li>プレミアムモルツ 香るエール 干支デザイン缶 350ml × 3本</li></ul>
       <p class="note">2027年の干支「未」をあしらった2種の迎春デザイン缶を、6缶の飲み比べに。お歳暮にも、お年賀の手土産にも。</p>
       <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>迎春デザインの2種を、ビッグボスで6缶のオリジナル箱にしました。かさばらないので、お年賀の手土産にもちょうどいいですよ。</p></div>
-      <p class="price">2,398<small>円（税込）</small></p>
-      <div class="btn-row"><a class="btn dark buy" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">購入はこちら</a><a class="btn fav" href="https://my.bookmark.rakuten.co.jp/?func=reg&amp;svid=101&amp;shop_bid=224915&amp;iid=10034294&amp;itype=1" target="_blank" rel="noopener" aria-label="プレモル 2種6缶セット PM6Bをお気に入りに登録" title="お気に入りに登録"></a></div>
+      <div class="buy-box">
+        <div class="price-line"><span class="pl">販売価格</span><p class="price">2,398<small>円（税込）</small></p></div>
+        <div class="btn-row"><a class="btn dark buy" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">購入はこちら</a><a class="btn fav" href="https://my.bookmark.rakuten.co.jp/?func=reg&amp;svid=101&amp;shop_bid=224915&amp;iid=10034294&amp;itype=1" target="_blank" rel="noopener" aria-label="プレモル 2種6缶セット PM6Bをお気に入りに登録" title="お気に入りに登録"></a></div>
+      </div>
     </div>
   </div>
 
   <!-- ▼ PICK UP 2：DMD3S。商品ページURLが決まったら <div class="pickup is-soon"> を <a class="pickup" href="URL" target="_blank" rel="noopener"> に（閉じタグも </a> に）、
-         価格が決まったら .price の文言、ボタンを <span class="btn dark">購入はこちら</span> に変更してください -->
+         価格が決まったら .price の「◯,◯◯◯」を数字に、ボタンを <span class="btn dark">購入はこちら</span> に変更してください -->
   <div class="pickup is-soon">
     <span class="ribbon">PICK UP</span>
     <div class="ph cut"><img src="img/item-dmd3s.png" width="494" height="620" alt="「夢」マスターズドリーム ダブルセット DMD3S" loading="lazy"></div>
@@ -557,8 +567,10 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
       <ul><li>マスターズドリーム 350ml × 5本</li><li>マスターズドリーム 水泉動 350ml × 5本</li></ul>
       <p class="note">マスターズドリームと、限定醸造の水泉動を5本ずつ。飲み比べる時間まで贈れる、ビール好きのための一箱。</p>
       <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>このページのセットで、水泉動がいちばん多く入っているのがこれ。限定醸造をじっくり楽しんでほしい方に。</p></div>
-      <span class="price tbd">価格・発売日は近日公開</span>
-      <span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>
+      <div class="buy-box">
+        <div class="price-line"><span class="pl">販売価格</span><p class="price"><span class="q">◯,◯◯◯</span><small>円（税込）</small></p></div>
+        <span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>
+      </div>
     </div>
   </div>
 
@@ -682,7 +694,7 @@ function card(p,i){
     <h3>${p.name}</h3>
     <p class="spec">${p.id} ｜ ${p.spec}</p>
     <p class="inside">${p.inside}</p>
-    ${p.price?`<p class="price">${yen(p.price)}<small>円（税込）</small></p><p class="ship">本州送料無料</p>`:`<p class="price tbd">${p.priceNote||'価格は近日公開'}</p>`}
+    ${p.price?`<p class="price">${yen(p.price)}<small>円（税込）</small></p><p class="ship">本州送料無料</p>`:`<p class="price"><span class="q">◯,◯◯◯</span><small>円（税込）</small></p><p class="ship">本州送料無料</p>`}
     ${btn}
   </article>`;
 }
