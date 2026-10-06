@@ -42,9 +42,11 @@ figure{margin:0}
 .btn-row .buy{flex:1}
 .btn.fav{flex:none;width:52px;padding:0;background:#fff;color:var(--red);border-color:var(--red);line-height:1}
 .btn.fav:hover{background:#fff1f1}
-.btn-row .btn.fav{width:48px!important;min-width:48px!important;height:48px;min-height:48px!important;flex:none!important;border-radius:50%;align-self:center}
+.btn-row .btn.fav{width:40px!important;min-width:40px!important;height:40px;min-height:40px!important;flex:none!important;border-radius:50%;align-self:center}
 .btn-row{align-items:center}
-.btn-row .buy{min-height:48px}
+.btn-row .buy{min-height:40px}
+.product .btn-row .buy{padding:8px 10px;font-size:13px}
+.btn-row .btn.fav::before{font-size:20px}
 .btn.fav::before{content:"\2661";font-size:24px;line-height:1}
 .btn.light{background:transparent;border-color:#d7c394;color:var(--gold-l)}
 .btn.light:hover{background:#ffffff12}
@@ -97,12 +99,11 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .vertical{position:absolute;right:48px;top:172px;z-index:2;writing-mode:vertical-rl;letter-spacing:.18em;color:#fff;font-size:24px;font-weight:500}
 /* ---------- nav ---------- */
 .nav{display:flex;justify-content:center;gap:10px;padding:12px 16px;background:#fff;border-bottom:1px solid #d8d3c7;box-shadow:0 6px 18px #10244314;position:sticky;top:0;z-index:10}
-.nav a{display:flex;align-items:center;justify-content:center;gap:8px;min-width:190px;padding:12px 22px;font-size:15px;font-weight:700;letter-spacing:.06em;text-decoration:none;color:var(--blue);background:#fff;border:1.5px solid var(--blue);border-radius:999px;cursor:pointer;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
+.nav a{display:flex;align-items:center;justify-content:center;gap:8px;min-width:190px;padding:12px 22px;font-size:15px;font-weight:700;letter-spacing:.06em;text-decoration:none;color:var(--deep);background:linear-gradient(180deg,#e6c77f,#d3ab58);border:1.5px solid #c49a42;border-radius:10px;cursor:pointer;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
 .nav a::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
-.nav a:hover,.nav a:focus-visible{background:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 8px 18px #10244340}
+.nav a:hover,.nav a:focus-visible{background:linear-gradient(180deg,#d9b763,#bf9440);color:var(--deep);transform:translateY(-2px);box-shadow:0 8px 18px #79552940}
 .nav a:hover::after{transform:rotate(45deg) translate(2px,0)}
-.nav a.hl{background:var(--red);border-color:var(--red);color:#fff}
-.nav a.hl:hover{background:#a80000;border-color:#a80000}
+
 
 /* ---------- noshi ---------- */
 .noshi{background:#fff;padding:80px 24px}
@@ -183,7 +184,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .product .price small{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-weight:500;font-size:12px;margin-left:2px}
 .product .price.tbd{font-size:15px;color:var(--sub);font-family:inherit}
 .product .ship{font-size:12px;color:var(--sub);margin-bottom:12px}
-.product .btn{margin-top:auto;padding:10px;min-height:46px;font-size:14px}
+.product .btn{margin-top:auto;padding:8px 10px;min-height:40px;font-size:13px}
 .stocknote{font-size:13px;margin-top:22px;color:#73706b}
 
 /* ---------- eto (gold) ---------- */
@@ -357,7 +358,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .product .spec,.product .inside{font-size:12px;margin-top:2px}
   .product .price{font-size:26px;margin-top:6px}
   .product .ship{font-size:11px;margin-bottom:0}
-  .product .btn{grid-column:1/-1;margin-top:12px;min-height:44px}
+  .product .btn{grid-column:1/-1;margin-top:12px;min-height:40px}
   .product .btn-row{grid-column:1/-1;margin-top:12px}
   .product .btn-row .btn{margin-top:0}
   .pickup .btn-row .btn{width:auto}
@@ -397,7 +398,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .footer-logo img{height:40px}
   footer{padding-bottom:96px}
   .floating{position:fixed;bottom:0;left:0;right:0;display:flex;background:#071529ee;color:#fff;backdrop-filter:blur(8px);padding:8px 14px calc(8px + env(safe-area-inset-bottom));z-index:20;justify-content:space-between;align-items:center;font-size:12px;gap:10px}
-  .floating .btn{min-height:40px;font-size:13px;padding:6px 18px;white-space:nowrap}
+  .floating .btn{min-height:40px;font-size:13px;padding:6px 18px;white-space:nowrap;border-radius:10px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.gold-dust{display:none}}
 
