@@ -401,7 +401,17 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   .hero-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .hero-art{top:0;bottom:0;right:auto;left:1040px;width:236px}
   .track img{margin-bottom:34px}
-}</style>
+}/* スマホ：看板画像（sp-fv.jpg）を背景に、文字の下・ビールの左の空いた部分で商品を横に流す */
+@media(max-width:760px){
+  .hero{padding:0;height:auto;aspect-ratio:1000/1216;background:#c60001 url(img/sp-fv.jpg) center/100% 100% no-repeat}
+  .hero-stage{position:absolute;inset:0}
+  .hero-beer,.hero-en,.vertical{display:none}
+  .hero-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .hero-art{position:absolute!important;left:0;right:auto;top:auto;bottom:2.5%;width:73%;height:23%;margin:0;overflow:hidden}
+  .lane,.track{height:100%}
+  .track img{height:92%;width:auto;margin:0 18px 0 0;align-self:center}
+}
+</style>
 </head>
 <body>
 <script>
