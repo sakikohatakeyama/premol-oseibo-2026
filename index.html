@@ -40,29 +40,29 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .season{font-size:13px;letter-spacing:.1em}
 
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 76% 75%,#89632e 0,transparent 42%),linear-gradient(120deg,#081526,#162f56 68%,#082147);color:#fff;padding:64px calc(7.5% + 336px) 56px 25%;min-height:720px;display:grid;grid-template-columns:minmax(0,1fr);align-items:center}
+.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 76% 75%,#89632e 0,transparent 42%),linear-gradient(120deg,#081526,#162f56 68%,#082147);color:#fff;padding:64px calc(11% + 340px) 56px 18%;min-height:720px;display:grid;grid-template-columns:minmax(0,1fr);align-items:center}
 .hero:before{content:"";position:absolute;width:860px;height:860px;border:1px solid #d3ab5850;border-radius:50%;right:-12%;top:-52%;box-shadow:0 0 0 32px #d3ab5810,0 0 0 70px #d3ab5808;pointer-events:none}
 .gold-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .hero-copy,.hero-art{position:relative;z-index:1}
 /* PC：コピーの後ろのビール素材（img の src に画像を入れると表示。スマホでは非表示） */
-/* 茶色い背景は「スクリーン合成＋コントラスト」で黒に沈めて抜く（切り抜きではなく合成） */
-.hero-beer{position:absolute;left:5%;top:0;bottom:0;width:42%;z-index:0;pointer-events:none;mix-blend-mode:screen;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 88%,transparent)}
-.hero-beer img{width:100%;height:100%;object-fit:cover;object-position:16% center;filter:brightness(.86) contrast(1.9) saturate(1.1)}
+/* PC：切り抜きのビール（透過PNG/WebP）を左側に大きく */
+.hero-beer{position:absolute;left:3%;top:-2%;bottom:0;z-index:0;pointer-events:none;display:flex;align-items:flex-end}
+.hero-beer img{height:104%;width:auto;max-width:none;filter:drop-shadow(0 20px 40px #0009)}
 .hero-copy h1,.hero-copy p{text-shadow:0 0 22px #071529,0 0 10px #071529e6,0 2px 4px #071529}
 .hero-beer:has(img[src=""]){display:none}
 .hero .eyebrow{color:#ebcb88;margin-bottom:22px}
-.hero h1{font-size:clamp(32px,3.2vw,52px);font-weight:600;line-height:1.5;letter-spacing:.02em}
+.hero h1{font-size:clamp(34px,3.8vw,60px);font-weight:600;line-height:1.5;letter-spacing:.02em}
 .hero h1 span{color:var(--gold-l)}
 .hero h1 .w{color:#fff}
 .hero-copy p{margin:22px 0 28px;font-size:17px;line-height:2}
 /* 流れるギフト（PC：縦に流れる2列／スマホ：横に流れる2段） */
-.hero-art{position:absolute!important;top:0;bottom:0;right:7.5%;width:300px;display:flex;justify-content:center;overflow:hidden}
+.hero-art{position:absolute!important;top:0;bottom:0;right:11%;width:300px;display:flex;justify-content:center;overflow:hidden}
 .lane{width:100%}
 .track{display:flex;flex-direction:column;animation:flowY 80s linear infinite}
 .track img{width:100%;height:auto;margin-bottom:44px;filter:drop-shadow(0 22px 20px #000b)}
 @keyframes flowY{to{transform:translateY(-50%)}}
 @keyframes flowX{to{transform:translateX(-50%)}}
-.vertical{position:absolute;right:3.5%;top:84px;z-index:2;writing-mode:vertical-rl;letter-spacing:.2em;color:#f4d390;font-size:18px}
+.vertical{position:absolute;right:7%;top:84px;z-index:2;writing-mode:vertical-rl;letter-spacing:.2em;color:#f4d390;font-size:18px}
 /* ---------- nav ---------- */
 .nav{display:flex;justify-content:center;gap:10px;padding:12px 16px;background:#fff;border-bottom:1px solid #d8d3c7;box-shadow:0 6px 18px #10244314;position:sticky;top:0;z-index:10}
 .nav a{display:flex;align-items:center;justify-content:center;gap:8px;min-width:190px;padding:12px 22px;font-size:15px;font-weight:700;letter-spacing:.06em;text-decoration:none;color:var(--blue);background:#fff;border:1.5px solid var(--blue);border-radius:999px;cursor:pointer;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
@@ -328,7 +328,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 <!-- ===== 1. ヒーロー ===== -->
 <section class="hero">
   <!-- ▼ PC用：コピーの後ろに敷くビール素材。src に画像パスを入れてください（例：img/hero-beer.jpg） -->
-  <div class="hero-beer" aria-hidden="true"><img src="img/hero-beer.jpg" width="1600" height="1066" alt="" fetchpriority="high"></div>
+  <div class="hero-beer" aria-hidden="true"><img src="img/hero-beer.webp" width="700" height="1534" alt="" fetchpriority="high"></div>
   <canvas class="gold-dust" aria-hidden="true"></canvas>
   <div class="hero-copy">
     <div class="eyebrow">THE PREMIUM MALT'S · WINTER GIFT</div>
