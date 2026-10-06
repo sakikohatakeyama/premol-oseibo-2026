@@ -551,7 +551,7 @@ h2 .po{margin-left:-.5em}
     <div>
       <span class="lead">ビッグボスだけのオリジナルセット</span>
       <h3>プレモル 干支デザイン<br>2種6缶セット</h3>
-      <div class="tags"><span class="tag">PM6B</span><span class="tag when" data-when="2026年11月25日発売">予約・2026年11月25日発売</span><span class="tag">本州送料無料</span></div>
+      <div class="tags"><span class="tag">PM6B</span><span class="tag when">予約・2026年11月25日発売</span><span class="tag">本州送料無料</span></div>
       <ul><li>プレミアムモルツ 干支デザイン缶 350ml × 3本</li><li>プレミアムモルツ 香るエール 干支デザイン缶 350ml × 3本</li></ul>
       <p class="note">2027年の干支「未」をあしらった2種の迎春デザイン缶を、6缶の飲み比べに。お歳暮にも、お年賀の手土産にも。</p>
       <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>迎春デザインの2種を、ビッグボスで6缶のオリジナル箱にしました。かさばらないので、お年賀の手土産にもちょうどいいですよ。</p></div>
@@ -694,12 +694,8 @@ const products=[
 ];
 const yen=n=>n.toLocaleString('ja-JP');
 const link=p=>p.url?ITEM+p.url+'/':null;
-/* 発売日（日本時間）の0時を過ぎたら「予約・〇月〇日発売」→「発売中」に自動で切り替え */
-const released=w=>{const m=/(\d{4})年(\d{1,2})月(\d{1,2})日/.exec(w||'');return !!m&&Date.now()>=Date.UTC(+m[1],m[2]-1,+m[3])-9*3600e3};
-const whenTag=w=>w==='now'||released(w)?'<span class="tag now">発売中</span>':w?`<span class="tag when">予約・${w}</span>`:'';
-document.querySelectorAll('[data-when]').forEach(el=>{if(released(el.dataset.when))el.outerHTML=whenTag('now')});
 function card(p,i){
-  const when=whenTag(p.when);
+  const when=p.when==='now'?'<span class="tag now">発売中</span>':p.when?`<span class="tag when">予約・${p.when}</span>`:'';
   const btn=p.url?`<div class="btn-row"><a class="btn dark buy" href="${link(p)}" target="_blank" rel="noopener">購入はこちら</a>${p.rid?`<a class="btn fav" href="${FAV(p.rid)}" target="_blank" rel="noopener" aria-label="${p.name} ${p.id}をお気に入りに登録" title="お気に入りに登録"></a>`:''}</div>`:'<span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>';
   return `<article class="product" data-cat="${p.cat}" data-price="${p.price??''}" data-cans="${p.cans}" data-order="${i}" id="gift-${p.id}">
     <div class="tags"><span class="tag">${p.tag}</span>${when}</div>
