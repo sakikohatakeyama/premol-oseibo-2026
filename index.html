@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>いつもより、少しいいビールを。｜酒のビッグボス お歳暮・お年賀</title>
 <meta name="description" content="一年のありがとうに、プレモルを。限定醸造マスターズドリーム 水泉動、干支デザイン缶、選べるオリジナルのしで贈る、酒のビッグボスのお歳暮・お年賀ビールギフト特集。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Jost:wght@600&family=M+PLUS+Rounded+1c:wght@500;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230d2144'/%3E%3Ctext x='20' y='29' text-anchor='middle' font-size='27' fill='%23e9c26c'%3EB%3C/text%3E%3C/svg%3E">
 <style>
 /* PCのメインコンテンツ幅（ヘッダーとFVは別管理） */
@@ -23,7 +24,8 @@ figure{margin:0}
 .serif,h1,h2,.noshi-kind{font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho",serif}
 .nobr{display:inline-block}
 .sp-only{display:none}
-@media(max-width:760px){.pc-only{display:none}.sp-only{display:inline}}
+.sp-br{display:none}
+@media(max-width:760px){.pc-only{display:none}.sp-only{display:inline}.sp-br{display:inline}}
 .eyebrow{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
 [hidden]{display:none!important}
 
@@ -48,30 +50,34 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 /* ---------- hero ----------
    PC：FVは幅1400×高さ600pxの「1枚の絵」（.hero-stage）として作り、画面の横幅に合わせて丸ごと拡大縮小する。
    → ブラウザの表示倍率を変えてもFVの見た目の大きさ・構図は変わらない（--s はJSで設定） */
-.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse 620px 460px at calc(50% + 364px) 75%,#89632e 0,transparent 100%),linear-gradient(120deg,#081526,#162f56 68%,#082147);color:#fff;height:calc(600px * var(--s,1))}
-.hero-stage{position:absolute;left:0;top:0;width:1400px;height:600px;transform:scale(var(--s,1));transform-origin:0 0;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;padding:40px 530px 40px 252px}
-.hero:before{content:"";position:absolute;width:860px;height:860px;border:1px solid #d3ab5850;border-radius:50%;right:calc(50% - 868px);top:-374px;box-shadow:0 0 0 32px #d3ab5810,0 0 0 70px #d3ab5808;pointer-events:none}
+.hero{position:relative;overflow:hidden;background:#c60001;color:#fff;height:calc(600px * var(--s,1))}
+.hero-stage{position:absolute;left:0;top:0;width:1400px;height:600px;transform:scale(var(--s,1));transform-origin:0 0;display:grid;grid-template-columns:minmax(0,1fr);align-items:start;padding:142px 0 0 93px}
+.hero-copy{width:620px}
+.hero:before{content:none}
 .gold-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.hero-copy,.hero-art{position:relative;z-index:1}
+.hero-copy{position:relative;z-index:2}
+.hero-art{z-index:1}
 /* PC：コピーの後ろのビール素材（img の src に画像を入れると表示。スマホでは非表示） */
 /* PC：切り抜きのビール（透過PNG/WebP）を左側に大きく */
-.hero-beer{position:absolute;left:calc(50% - 504px);top:-150px;bottom:0;z-index:0;pointer-events:none;display:flex;align-items:flex-start}
-.hero-beer img{height:922px;width:auto;max-width:none}
-.hero-copy h1,.hero-copy p{text-shadow:0 1px 6px #07152966}
+.hero-beer{position:absolute;left:500px;top:-97px;bottom:0;z-index:1;pointer-events:none;display:flex;align-items:flex-start}
+.hero-beer img{height:860px;width:auto;max-width:none}
+
 .hero-beer:has(img[src=""]){display:none}
-.hero .eyebrow{color:#ebcb88;margin-bottom:22px}
-.hero h1{font-size:53px;font-weight:600;line-height:1.5;letter-spacing:.02em}
-.hero h1 span{color:#fff}
-.hero h1 .w{color:#fff}
-.hero-copy p{margin:22px 0 28px;font-size:17px;line-height:2}
+/* FV（赤背景・FVイメージ.jpg に合わせたレイアウト） */
+.hero-en{position:absolute;left:38px;top:34px;z-index:0;white-space:nowrap;font-family:Jost,Futura,"Century Gothic",sans-serif;font-weight:600;font-size:70px;line-height:1;letter-spacing:.06em;color:#ca9013;pointer-events:none}
+.fv-title{margin:0;font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN",sans-serif;font-weight:800;color:#fff;font-size:50px;line-height:1.42;letter-spacing:.14em}
+.fv-title .hand{width:502px;height:auto;margin:0 0 10px -6px}
+.fv-title .l{display:block}
+.fv-sub{margin:20px 0 22px;color:#fff;font-size:16px;line-height:1.85;font-weight:500}
+.fv-tag{display:inline-block;border:2px solid #fff;color:#fff;font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN",sans-serif;font-weight:500;font-size:28px;letter-spacing:.24em;padding:6px 42px 6px 50px;line-height:1.5}
 /* 流れるギフト（PC：縦に流れる2列／スマホ：横に流れる2段） */
-.hero-art{position:absolute!important;top:0;bottom:0;right:calc(50% - 470px);width:300px;display:flex;justify-content:center;overflow:hidden}
+.hero-art{position:absolute!important;top:0;bottom:0;right:130px;width:300px;display:flex;justify-content:center;overflow:hidden}
 .lane{width:100%}
 .track{display:flex;flex-direction:column;animation:flowY 80s linear infinite}
 .track img{width:100%;height:auto;margin-bottom:44px}
 @keyframes flowY{to{transform:translateY(-50%)}}
 @keyframes flowX{to{transform:translateX(-50%)}}
-.vertical{position:absolute;right:calc(50% - 602px);top:84px;z-index:2;writing-mode:vertical-rl;letter-spacing:.2em;color:#f4d390;font-size:18px}
+.vertical{position:absolute;right:48px;top:172px;z-index:2;writing-mode:vertical-rl;letter-spacing:.18em;color:#fff;font-size:24px;font-weight:500}
 /* ---------- nav ---------- */
 .nav{display:flex;justify-content:center;gap:10px;padding:12px 16px;background:#fff;border-bottom:1px solid #d8d3c7;box-shadow:0 6px 18px #10244314;position:sticky;top:0;z-index:10}
 .nav a{display:flex;align-items:center;justify-content:center;gap:8px;min-width:190px;padding:12px 22px;font-size:15px;font-weight:700;letter-spacing:.06em;text-decoration:none;color:var(--blue);background:#fff;border:1.5px solid var(--blue);border-radius:999px;cursor:pointer;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
@@ -261,11 +267,15 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .hero{padding:32px 20px 26px;height:auto}
   .hero-stage{position:static;width:auto;height:auto;transform:none;display:block;padding:0}
   .hero:before{right:-520px;top:-500px}
-  .hero-beer{left:auto;right:-86px;top:-12px;bottom:auto;height:570px;align-items:flex-start}
+  .hero-beer{left:auto;right:-86px;top:30px;bottom:auto;height:570px;align-items:flex-start}
   .hero-beer img{height:100%}
-  .hero .eyebrow{font-size:11px;margin-bottom:14px;letter-spacing:.12em}
-  .hero h1{font-size:clamp(28px,8.4vw,36px);letter-spacing:.02em;line-height:1.5}
-  .hero-copy p{font-size:14px;margin:14px 0 18px;line-height:1.9}
+  .hero{padding-top:90px}
+  .hero-en{left:18px;top:16px;font-size:27px;line-height:1.1;letter-spacing:.05em}
+  .hero-copy{width:auto}
+  .fv-title{font-size:clamp(26px,7.6vw,31px);letter-spacing:.08em}
+  .fv-title .hand{width:min(300px,82vw);margin:0 0 6px -4px}
+  .fv-sub{font-size:13px;margin:12px 0 14px;line-height:1.8}
+  .fv-tag{font-size:18px;padding:5px 22px 5px 26px;letter-spacing:.2em}
   .hero .btn{min-height:46px;font-size:14px;padding:10px 22px}
   .hero-art{position:relative!important;top:auto;bottom:auto;right:auto;width:auto;display:block;height:auto;margin:22px -20px 0}
   .lane{width:auto}
@@ -393,10 +403,11 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   <canvas class="gold-dust" aria-hidden="true"></canvas>
   <div class="hero-stage">
   <div class="hero-beer" aria-hidden="true"><img src="img/hero-beer.webp" width="700" height="1534" alt="" fetchpriority="high"></div>
+  <div class="hero-en" aria-hidden="true">THE PREMIUM MALT'S<br class="sp-br"> WINTER GIFT</div>
   <div class="hero-copy">
-    <div class="eyebrow">BIGBOSS SELECT ｜ 酒のビッグボスが選ぶ、冬のプレモル</div>
-    <h1><span class="nobr w">一年のありがとうに、</span><br><span>いつもより、<br>少しいいビールを。</span></h1>
-    <p><span class="pc-only">贈りたいのは、うれしい一杯。<br>お歳暮もお年賀も、今年のご挨拶はプレモルで。</span><span class="sp-only">贈りたいのは、うれしい一杯。<br>お歳暮も、お年賀も。<br>今年のご挨拶は、プレモルで。</span></p>
+    <h1 class="fv-title"><img class="hand" src="img/fv-hand-line1.png" width="1000" height="207" alt="一年のありがとうに、"><span class="l">いつもより、</span><span class="l">少しいいビールを。</span></h1>
+    <p class="fv-sub"><span class="pc-only">贈りたいのは、うれしい一杯。<br>お歳暮もお年賀も、今年のご挨拶はプレモルで。</span><span class="sp-only">贈りたいのは、うれしい一杯。<br>お歳暮もお年賀も、<br>今年のご挨拶はプレモルで。</span></p>
+    <div class="fv-tag">お歳暮・お年賀特集</div>
   </div>
   <div class="hero-art" aria-label="お歳暮・お年賀のギフトセット">
     <div class="lane"><div class="track"><img src="img/item-bp5ag.png" width="557" height="451" alt="サントリービール 7種18本セット BP5AG"><img src="img/item-vm3s.png" width="587" height="377" alt="プレモル5種セット VM3S"><img src="img/item-vm5s.png" width="555" height="496" alt="プレモル5種セット VM5S"><img src="img/item-bp3ag.png" width="612" height="436" alt="サントリービール 6種11本セット BP3AG"><img src="img/item-bpf5s.png" width="632" height="394" alt="ザ・プレミアム・モルツ BPF5S"><img src="img/item-bpf4s.png" width="620" height="524" alt="ザ・プレミアム・モルツ BPF4S"><img src="img/item-bpck3s.png" width="540" height="353" alt="プレモル 干支デザインセット BPCK3S"><img src="img/item-vm4s.png" width="571" height="417" alt="プレモル5種セット VM4S"><img src="img/item-dmd3s.png" width="494" height="620" alt="マスターズドリーム ダブルセット DMD3S"><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S"><img src="img/item-fj3s.png" width="620" height="421" alt="プレモル ファミリーセット FJ3S"></div></div>
@@ -645,7 +656,7 @@ applyFilter('all');
   const mq=matchMedia('(prefers-reduced-motion: reduce)');
   const hero=document.querySelector('.hero');
   // ヒーロー：読み込み時の順番表示
-  [['.hero .eyebrow',''],['.hero h1',''],['.hero-copy p',''],['.hero-copy .btn',''],['.hero-art .lane','rise'],['.hero .vertical','']].forEach(([sel,k],i)=>{
+  [['.hero-en',''],['.hero h1',''],['.fv-sub',''],['.fv-tag',''],['.hero-art .lane','rise'],['.hero .vertical','']].forEach(([sel,k],i)=>{
     document.querySelectorAll(sel).forEach((el,j)=>{el.classList.add('ld');if(k)el.classList.add(k);el.style.setProperty('--d',(i*.12+j*.1)+'s')});
   });
   const showHero=()=>hero.classList.add('loaded');
