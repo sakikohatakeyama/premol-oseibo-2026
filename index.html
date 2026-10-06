@@ -38,9 +38,10 @@ figure{margin:0}
 .btn-row{display:flex;gap:8px;margin-top:auto}
 .btn-row .btn{margin-top:0}
 .btn-row .buy{flex:1}
-.btn.fav{flex:none;background:#fff;color:var(--red);border-color:var(--red);padding:10px 14px;gap:6px;font-size:13px}
+.btn.fav{flex:none;width:52px;padding:0;background:#fff;color:var(--red);border-color:var(--red);line-height:1}
 .btn.fav:hover{background:#fff1f1}
-.btn.fav::before{content:"\2661";font-size:17px;line-height:1}
+.btn-row .btn.fav{width:52px!important;min-width:52px!important;flex:none!important}
+.btn.fav::before{content:"\2661";font-size:24px;line-height:1}
 .btn.light{background:transparent;border-color:#d7c394;color:var(--gold-l)}
 .btn.light:hover{background:#ffffff12}
 .btn.soon{background:#cfd2d9;border-color:#cfd2d9;color:#fff;cursor:default}
@@ -327,8 +328,14 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .choice p{font-size:12px;line-height:1.6}
   .choice .linktext{grid-column:1/-1;margin-top:12px;padding-top:10px;font-size:13px}
   .feature{grid-template-columns:1fr;padding:52px 20px;gap:18px}
-  .feature-img{grid-row:2}
-  .feature-img img{width:auto;max-height:300px}
+  .feature > div:last-child{display:contents}
+  .feature .eyebrow{order:1;text-align:center}
+  .feature h2{order:2;text-align:center;margin:-6px 0 0}
+  .feature-img{order:3;grid-row:auto}
+  .feature .reading{order:4;margin-bottom:0}
+  .feature > div:last-child > p{order:5}
+  .feature .bb-say{order:6;margin-top:0}
+  .feature-img img{width:auto;max-height:300px;position:relative;left:-7%}
   .feature h2{font-size:28px}
   .feature .reading{font-size:15px;margin-bottom:16px}
   .feature p{font-size:14px}
@@ -422,7 +429,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   .hero-stage{position:absolute;inset:0}
   .hero-beer,.hero-en,.vertical{display:none}
   .hero-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .hero-art{position:absolute!important;left:0;right:auto;top:auto;bottom:2.5%;width:73%;height:23%;margin:0;overflow:hidden}
+  .hero-art{position:absolute!important;left:0;right:0;top:auto;bottom:2.5%;width:auto;height:23%;margin:0;overflow:hidden}
   .lane,.track{height:100%}
   .track img{height:92%;width:auto;margin:0 18px 0 0;align-self:center}
 }
@@ -511,7 +518,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
       <p class="note">2027年の干支「未」をあしらった2種の迎春デザイン缶を、6缶の飲み比べに。お歳暮にも、お年賀の手土産にも。</p>
       <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>迎春デザインの2種を、ビッグボスで6缶のオリジナル箱にしました。かさばらないので、お年賀の手土産にもちょうどいいですよ。</p></div>
       <p class="price">2,398<small>円（税込）</small></p>
-      <div class="btn-row"><a class="btn dark buy" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">購入はこちら</a><a class="btn fav" href="https://my.bookmark.rakuten.co.jp/?func=reg&amp;svid=101&amp;shop_bid=224915&amp;iid=10034294&amp;itype=1" target="_blank" rel="noopener" aria-label="プレモル 2種6缶セット PM6Bをお気に入りに登録">お気に入り</a></div>
+      <div class="btn-row"><a class="btn dark buy" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">購入はこちら</a><a class="btn fav" href="https://my.bookmark.rakuten.co.jp/?func=reg&amp;svid=101&amp;shop_bid=224915&amp;iid=10034294&amp;itype=1" target="_blank" rel="noopener" aria-label="プレモル 2種6缶セット PM6Bをお気に入りに登録" title="お気に入りに登録"></a></div>
     </div>
   </div>
 
@@ -645,7 +652,7 @@ const yen=n=>n.toLocaleString('ja-JP');
 const link=p=>p.url?ITEM+p.url+'/':null;
 function card(p,i){
   const when=p.when==='now'?'<span class="tag now">発売中</span>':p.when?`<span class="tag when">予約・${p.when}</span>`:'';
-  const btn=p.url?`<div class="btn-row"><a class="btn dark buy" href="${link(p)}" target="_blank" rel="noopener">購入はこちら</a>${p.rid?`<a class="btn fav" href="${FAV(p.rid)}" target="_blank" rel="noopener" aria-label="${p.name} ${p.id}をお気に入りに登録">お気に入り</a>`:''}</div>`:'<span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>';
+  const btn=p.url?`<div class="btn-row"><a class="btn dark buy" href="${link(p)}" target="_blank" rel="noopener">購入はこちら</a>${p.rid?`<a class="btn fav" href="${FAV(p.rid)}" target="_blank" rel="noopener" aria-label="${p.name} ${p.id}をお気に入りに登録" title="お気に入りに登録"></a>`:''}</div>`:'<span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>';
   return `<article class="product" data-cat="${p.cat}" data-price="${p.price??''}" data-cans="${p.cans}" data-order="${i}" id="gift-${p.id}">
     <div class="tags"><span class="tag">${p.tag}</span>${when}</div>
     <div class="ph${p.photo?' photo':''}"><img src="img/${p.img}" width="${p.w}" height="${p.h}" alt="${p.name} ${p.id}" loading="lazy"></div>
