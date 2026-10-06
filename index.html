@@ -55,6 +55,9 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .hero-copy{width:620px}
 .hero:before{content:none}
 .gold-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+/* キラリン：ボタンと同じ光の帯が、FV全体をときどき横切る */
+.hero::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-45%;width:32%;z-index:4;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);animation:heroShine 6s ease-in-out infinite}
+@keyframes heroShine{0%,55%{left:-45%}100%{left:130%}}
 
 .hero-copy{position:relative;z-index:2}
 .hero-art{z-index:1}
@@ -389,14 +392,14 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 .product .ph img,.choice img,.eto-item .ph img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .product:hover .ph img,.choice:hover img,.eto-item:hover .ph img{transform:translateY(-6px) scale(1.03)}
 .parallax{will-change:transform}
-@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ld{opacity:1!important;transform:none!important;filter:none!important}.track,.shine::before{animation:none}.sweep::after{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ld{opacity:1!important;transform:none!important;filter:none!important}.track,.shine::before,.hero::after{animation:none}.sweep::after{transform:scaleX(1)}}
 /* PC：看板画像（pc-fv.jpg）を背景に、右側の空いた部分で商品を流す。文字は画像に含まれるため、HTMLの文字は読み上げ・検索用に非表示で残す */
 @media(min-width:761px){
   .hero{height:calc(594px * var(--s,1))}
-  .hero-stage{height:594px;padding:0;background:url(img/pc-fv.jpg) center/100% 100% no-repeat}
+  .hero-stage{height:594px;padding:0;background:url(img/pc-fv-gift.jpg) center/100% 100% no-repeat}
   .hero-beer,.hero-en,.vertical{display:none}
   .hero-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .hero-art{top:104px;bottom:0;right:auto;left:1040px;width:236px}
+  .hero-art{top:0;bottom:0;right:auto;left:1040px;width:236px}
   .track img{margin-bottom:34px}
 }</style>
 </head>
@@ -719,19 +722,16 @@ applyFilter('all');
   addEventListener('scroll',onScroll,{passive:true});onScroll();
 })();
 
-/* 紙吹雪とキラリン（FV内のみ。動きを減らす設定の端末では表示しない） */
+/* 紙吹雪（FV内のみ。動きを減らす設定の端末では表示しない） */
 (()=>{const c=document.querySelector('.gold-dust'),ctx=c.getContext('2d'),hero=c.parentElement,mq=matchMedia('(prefers-reduced-motion: reduce)');
 const colors=['#f6d77a','#e9b949','#fff4d0','#ffffff','#f2c14e','#ffe7a3'];
-let w=0,h=0,papers=[],stars=[],frame=0,last=0,visible=true;
+let w=0,h=0,papers=[],frame=0,last=0,visible=true;
 const rnd=(a,b)=>a+Math.random()*(b-a);
-function makePaper(top){return{x:rnd(0,w),y:top?rnd(-h,0):rnd(0,h),sw:rnd(6,11),sh:rnd(9,16),vy:rnd(28,58),vx:rnd(-12,12),sway:rnd(0,6.28),swaySp:rnd(1,2.2),rot:rnd(0,6.28),rotSp:rnd(-3,3),flip:rnd(0,6.28),flipSp:rnd(3,7),col:colors[Math.random()*colors.length|0],a:rnd(.75,1)}}
-function makeStar(){return{x:rnd(0,w),y:rnd(0,h),r:rnd(7,16),life:0,dur:rnd(1.1,2),delay:rnd(0,2.5)}}
-function resize(){w=hero.clientWidth;h=hero.clientHeight;const d=Math.min(devicePixelRatio||1,2);c.width=w*d;c.height=h*d;ctx.setTransform(d,0,0,d,0,0);const n=w<760?26:56;papers=Array.from({length:n},()=>makePaper(false));stars=Array.from({length:w<760?5:10},makeStar)}
-function drawStar(x,y,r,al){ctx.save();ctx.translate(x,y);ctx.globalAlpha=al;const g=ctx.createRadialGradient(0,0,0,0,0,r*1.6);g.addColorStop(0,'rgba(255,250,220,.9)');g.addColorStop(1,'rgba(255,230,150,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,r*1.6,0,6.29);ctx.fill();ctx.fillStyle='#fffbe8';ctx.beginPath();ctx.moveTo(0,-r);ctx.quadraticCurveTo(r*.12,-r*.12,r,0);ctx.quadraticCurveTo(r*.12,r*.12,0,r);ctx.quadraticCurveTo(-r*.12,r*.12,-r,0);ctx.quadraticCurveTo(-r*.12,-r*.12,0,-r);ctx.fill();ctx.restore()}
+function makePaper(top){return{x:rnd(0,w),y:top?rnd(-h,0):rnd(0,h),sw:rnd(5,8),sh:rnd(8,12),vy:rnd(28,58),vx:rnd(-12,12),sway:rnd(0,6.28),swaySp:rnd(1,2.2),rot:rnd(0,6.28),rotSp:rnd(-3,3),flip:rnd(0,6.28),flipSp:rnd(3,7),col:colors[Math.random()*colors.length|0],a:rnd(.75,1)}}
+function resize(){w=hero.clientWidth;h=hero.clientHeight;const d=Math.min(devicePixelRatio||1,2);c.width=w*d;c.height=h*d;ctx.setTransform(d,0,0,d,0,0);const n=w<760?10:22;papers=Array.from({length:n},()=>makePaper(false))}
 function draw(t){frame=0;if(mq.matches||document.hidden||!visible){last=0;return}const dt=last?Math.min((t-last)/1000,.05):0;last=t;ctx.clearRect(0,0,w,h);
 for(const p of papers){p.y+=p.vy*dt;p.x+=(p.vx+Math.sin(p.sway)*18)*dt;p.sway+=p.swaySp*dt;p.rot+=p.rotSp*dt;p.flip+=p.flipSp*dt;if(p.y>h+20){Object.assign(p,makePaper(true));p.y=-20}
 ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.scale(1,Math.cos(p.flip));ctx.globalAlpha=p.a;ctx.fillStyle=p.col;ctx.fillRect(-p.sw/2,-p.sh/2,p.sw,p.sh);ctx.restore()}
-for(const s of stars){if(s.delay>0){s.delay-=dt;continue}s.life+=dt;const k=s.life/s.dur;if(k>=1){Object.assign(s,makeStar());continue}const al=Math.sin(k*Math.PI);drawStar(s.x,s.y,s.r*(.6+.4*al),al)}
 frame=requestAnimationFrame(draw)}
 function resume(){if(!frame&&!mq.matches&&!document.hidden&&visible)frame=requestAnimationFrame(draw)}
 new ResizeObserver(()=>{resize();resume()}).observe(hero);new IntersectionObserver(e=>{visible=e[0].isIntersecting;resume()}).observe(hero);document.addEventListener('visibilitychange',resume);mq.addEventListener('change',()=>{ctx.clearRect(0,0,w,h);resume()});resize();resume()})();
