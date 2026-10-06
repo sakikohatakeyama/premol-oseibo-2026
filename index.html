@@ -22,7 +22,7 @@ button,select{font:inherit}
 img{max-width:100%;height:auto;display:block}
 figure{margin:0}
 .serif,h1,h2,.noshi-kind{font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho",serif}
-.nobr{display:inline-block}
+.nobr{display:inline-block;white-space:nowrap}
 .sp-only{display:none}
 .sp-br{display:none}
 @media(max-width:760px){.pc-br{display:none}}
@@ -468,6 +468,9 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   .pickup .bb-say{order:-1;margin:6px 0 18px}
   .pickup .ph{margin-bottom:16px}
 }
+/* 見出しの行末の「、。」」と行頭の「「」の余白を詰めて、中央ぞろえのズレを防ぐ */
+h2 .pt{margin-right:-.5em}
+h2 .po{margin-left:-.5em}
 </style>
 </head>
 <body>
@@ -663,6 +666,12 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 <div class="floating"><span>お歳暮も、お年賀も。プレモルで。</span><a href="#gifts" class="btn">商品を選ぶ</a></div>
 
 <script>
+/* 見出し：行末の「、。」」と行頭の「「」を半角分詰める（目の錯覚で中央からズレて見えるのを防ぐ） */
+document.querySelectorAll('h2').forEach(h=>{
+  h.innerHTML=h.innerHTML
+    .replace(/([、。」])(?=(?:<\/span>)?(?:<br[^>]*>|\s*$))/g,'<span class="pt">$1</span>')
+    .replace(/(^\s*|<br[^>]*>|<span class="nobr">)「/g,'$1<span class="po">「</span>');
+});
 const ITEM='https://item.rakuten.co.jp/bigbossshibazaki/';
 /* 楽天のお気に入り登録（店舗ID 224915 ＋ 商品ごとの番号 rid） */
 const FAV=rid=>'https://my.bookmark.rakuten.co.jp/?func=reg&svid=101&shop_bid=224915&iid='+rid+'&itype=1';
