@@ -472,10 +472,10 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 h2 .pt{margin-right:-.5em}
 h2 .po{margin-left:-.5em}
 /* フッター：特集ページのトップへ戻るボタン */
-.to-top{display:flex;width:fit-content;align-items:center;justify-content:center;gap:10px;min-width:280px;margin:0 auto 34px;padding:14px 28px;border:1px solid #c49a42;border-radius:10px;background:linear-gradient(180deg,#e6c77f,#d3ab58);color:var(--deep);font-size:16px;font-weight:700;letter-spacing:.06em;text-decoration:none;box-shadow:0 6px 16px #00000033;transition:transform .2s,filter .2s}
+.to-top{display:flex;width:fit-content;align-items:center;justify-content:center;gap:10px;min-width:280px;margin:30px auto 0;padding:13px 28px;border:1.5px solid #fff;border-radius:10px;background:transparent;color:#fff;font-size:16px;font-weight:700;letter-spacing:.06em;text-decoration:none;transition:background .2s}
 .to-top::before{content:"";width:9px;height:9px;border-top:2.5px solid currentColor;border-left:2.5px solid currentColor;transform:translateY(2px) rotate(45deg)}
-.to-top:hover{transform:translateY(-2px);filter:brightness(1.05)}
-@media(max-width:760px){.to-top{min-width:0;width:100%;max-width:340px;margin-bottom:28px;font-size:15px}}
+.to-top:hover{background:#ffffff1a}
+@media(max-width:760px){.to-top{min-width:0;width:100%;max-width:340px;margin-top:24px;font-size:15px}}
 /* 3つの選び方ブロック：背景を赤に */
 .choose-wrap{background:var(--red);padding-bottom:90px}
 .choose-wrap .choices{margin-bottom:0}
@@ -674,9 +674,9 @@ h2 .po{margin-left:-.5em}
 </main>
 
 <footer>
-  <a class="to-top" href="#top">特集ページのトップへ</a>
   <a class="footer-logo" href="https://www.rakuten.co.jp/bigbossshibazaki/" target="_blank" rel="noopener"><img src="img/logo-bigboss-2026.png" width="633" height="120" alt="酒のビッグボス 楽天市場店 トップページへ" loading="lazy"></a>
   <p>20歳未満の者の飲酒は法律で禁止されています。20歳未満の方への酒類の販売はいたしません。</p>
+  <a class="to-top" href="#top">特集ページのトップへ</a>
 </footer>
 <div class="floating"><span>お歳暮も、お年賀も。プレモルで。</span><a href="#gifts" class="btn">商品を選ぶ</a></div>
 
