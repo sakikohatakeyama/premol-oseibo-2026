@@ -102,7 +102,7 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .intro .eyebrow{color:#a07831}
 .intro h2{font-size:clamp(26px,3.1vw,44px);margin:14px 0 20px;line-height:1.6}
 .intro p{font-size:16px;line-height:2.1}
-.choices{max-width:1120px;margin:0 auto 90px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.choices{max-width:1200px;margin:0 auto 90px;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .choice{text-decoration:none;display:flex;flex-direction:column;padding:24px;background:#fff;border-top:3px solid var(--gold);transition:transform .2s}
 .choice:hover{transform:translateY(-5px)}
 .choice .number{color:#b18946;font-size:13px;letter-spacing:.1em}
@@ -111,6 +111,11 @@ header{height:64px;display:flex;justify-content:space-between;align-items:center
 .choice img{height:190px;width:100%;object-fit:contain;margin:18px 0;filter:drop-shadow(0 10px 10px #10244320)}
 .choice .linktext{margin-top:auto;display:block;border-top:1px solid #eee4d1;padding-top:12px;font-size:14px;font-weight:700}
 .choice .linktext::after{content:" ›"}
+.choice{position:relative}
+.choice.pick{border-top-color:var(--red);box-shadow:0 0 0 2px var(--gold) inset}
+.choice.pick .ribbon{position:absolute;top:-13px;right:16px;background:var(--red);color:#fff;font-size:12px;font-weight:700;letter-spacing:.16em;padding:3px 12px}
+.choice.pick .number{color:var(--red)}
+.choice img.photo{object-fit:cover;filter:none}
 
 /* ---------- limited feature ---------- */
 .feature{position:relative;overflow:hidden;background:radial-gradient(ellipse at 22% 50%,#584128 0,transparent 55%),#141917;color:#fff;padding:96px 6%;display:grid;grid-template-columns:1fr 1fr;gap:5%;align-items:center}
@@ -212,6 +217,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
 
 /* ---------- tablet ---------- */
 @media(max-width:1080px){
+  .choices{grid-template-columns:repeat(2,1fr)}
   .noshi-columns{grid-template-columns:1fr;--nw:min(240px,calc((100vw - 120px) / 2))}
   .masters-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -403,9 +409,10 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
   <p>ビールが好きなあの人へ。お世話になったあの方へ。<br>気負わず贈れて、ちょっと贅沢。<br>今年は、開ける楽しみまで詰まったビールギフトを。</p>
 </section>
 <div class="choices">
-  <a class="choice" href="#gifts" data-jump="classic"><span class="number">01 / いつもの味を、贈り物に</span><h3>プレモル好きに。<br>王道の一箱。</h3><p>プレモルだけを詰めた定番セット。</p><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S" loading="lazy"><span class="linktext">定番のプレモルを選ぶ</span></a>
-  <a class="choice" href="#limited"><span class="number">02 / ビール好きの心をくすぐる</span><h3>限定醸造入り。<br>飲む楽しみを贈る。</h3><p>マスターズドリーム 水泉動も。</p><img src="img/item-vm3s.png" width="587" height="377" alt="水泉動入りプレモル5種セット VM3S" loading="lazy"><span class="linktext">限定醸造入りを選ぶ</span></a>
-  <a class="choice" href="#eto"><span class="number">03 / 新しい年のご挨拶に</span><h3>干支ラベルで、<br>晴れやかな一箱。</h3><p>お歳暮から、お年賀の手土産まで。</p><img src="img/item-bpck3s.png" width="540" height="353" alt="未年の干支デザイン缶 BPCK3S" loading="lazy"><span class="linktext">干支デザインを選ぶ</span></a>
+  <a class="choice pick" href="#pickup"><span class="ribbon">PICK UP</span><span class="number">01 / ビッグボスだけのオリジナル</span><h3>干支缶2種を、<br>6缶で飲み比べ。</h3><p>迎春デザイン缶の6缶セット。</p><img class="photo" src="img/pickup-pm6b.jpg" width="600" height="600" alt="プレモル 干支デザイン 2種6缶セット PM6B" loading="lazy"><span class="linktext">PICK UPを見る</span></a>
+  <a class="choice" href="#gifts" data-jump="classic"><span class="number">02 / いつもの味を、贈り物に</span><h3>プレモル好きに。<br>王道の一箱。</h3><p>プレモルだけを詰めた定番セット。</p><img src="img/item-bpf3s.png" width="540" height="352" alt="ザ・プレミアム・モルツ BPF3S" loading="lazy"><span class="linktext">定番のプレモルを選ぶ</span></a>
+  <a class="choice" href="#limited"><span class="number">03 / ビール好きの心をくすぐる</span><h3>限定醸造入り。<br>飲む楽しみを贈る。</h3><p>マスターズドリーム 水泉動も。</p><img src="img/item-vm3s.png" width="587" height="377" alt="水泉動入りプレモル5種セット VM3S" loading="lazy"><span class="linktext">限定醸造入りを選ぶ</span></a>
+  <a class="choice" href="#eto"><span class="number">04 / 新しい年のご挨拶に</span><h3>干支ラベルで、<br>晴れやかな一箱。</h3><p>お歳暮から、お年賀の手土産まで。</p><img src="img/item-bpck3s.png" width="540" height="353" alt="未年の干支デザイン缶 BPCK3S" loading="lazy"><span class="linktext">干支デザインを選ぶ</span></a>
 </div>
 
 <!-- ===== 4. マスターズドリーム 限定醸造 ===== -->
@@ -450,7 +457,7 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
     <p>定番の味、限定醸造、干支デザイン。贈りたい気持ちから選べる、冬のビールギフト。</p>
   </div>
   <!-- ▼ PICK UP：楽天広告の掲載商品（PM6B）。価格は未定のため金額は表示しない -->
-  <a class="pickup" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">
+  <a class="pickup" id="pickup" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">
     <span class="ribbon">PICK UP</span>
     <div class="ph"><img src="img/pickup-pm6b.jpg" width="600" height="600" alt="プレモル 干支デザイン 2種6缶セット PM6B（お歳暮のし付きのイメージ）" loading="lazy"></div>
     <div>
