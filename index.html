@@ -8,7 +8,8 @@
 <meta name="description" content="一年のありがとうに、プレモルを。限定醸造マスターズドリーム 水泉動、干支デザイン缶、選べるオリジナルのしで贈る、酒のビッグボスのお歳暮・お年賀ビールギフト特集。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230d2144'/%3E%3Ctext x='20' y='29' text-anchor='middle' font-size='27' fill='%23e9c26c'%3EB%3C/text%3E%3C/svg%3E">
 <style>
-:root{--blue:#102443;--deep:#071529;--gold:#d3ab58;--gold-l:#f2d89c;--paper:#faf8f2;--red:#a92b25;--ink:#182740;--sub:#6b6d71;--line:#e1dacb}
+/* PCのメインコンテンツ幅（ヘッダーとFVは別管理） */
+:root{--cw:1000px;--blue:#102443;--deep:#071529;--gold:#d3ab58;--gold-l:#f2d89c;--paper:#faf8f2;--red:#a92b25;--ink:#182740;--sub:#6b6d71;--line:#e1dacb}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{margin:0;color:var(--ink);background:var(--paper);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic",Meiryo,sans-serif;line-height:1.85;overflow-x:hidden}
@@ -82,7 +83,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 
 /* ---------- noshi ---------- */
 .noshi{background:#fff;padding:80px 24px}
-.noshi-inner{max-width:1100px;margin:auto}
+.noshi-inner{max-width:var(--cw);margin:auto}
 .noshi-top{text-align:center}
 .noshi .eyebrow{color:var(--red)}
 .noshi h2{font-size:clamp(28px,3.4vw,46px);line-height:1.55;margin:14px 0 20px}
@@ -96,7 +97,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .noshi-block h3{font-size:18px;margin:14px 0 10px;line-height:1.6}
 .noshi-block p{font-size:15px}
 /* のし画像は3枚とも同じ幅（--nw）にそろえる */
-.noshi-columns{--nw:212px}
+.noshi-columns{--nw:196px}
 .noshi-pair{display:grid;grid-template-columns:repeat(2,var(--nw));gap:16px;margin-top:auto;padding-top:22px;justify-content:center}
 .noshi-one{width:var(--nw);margin-top:auto;padding-top:22px}
 .noshi-block img{width:100%;border:1px solid #e8decd;box-shadow:0 8px 20px #1024430f;background:#fff}
@@ -110,7 +111,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .intro .eyebrow{color:#a07831}
 .intro h2{font-size:clamp(26px,3.1vw,44px);margin:14px 0 20px;line-height:1.6}
 .intro p{font-size:16px;line-height:2.1}
-.choices{max-width:1120px;margin:0 auto 90px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.choices{max-width:calc(var(--cw) + 48px);margin:0 auto 90px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .choice{text-decoration:none;display:flex;flex-direction:column;padding:24px;background:#fff;border-top:3px solid var(--gold);transition:transform .2s}
 .choice:hover{transform:translateY(-5px)}
 .choice .number{color:#b18946;font-size:13px;letter-spacing:.1em}
@@ -126,7 +127,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .choice img.photo{object-fit:cover;filter:none}
 
 /* ---------- limited feature ---------- */
-.feature{position:relative;overflow:hidden;background:radial-gradient(ellipse at 22% 50%,#584128 0,transparent 55%),#141917;color:#fff;padding:96px 6%;display:grid;grid-template-columns:1fr 1fr;gap:5%;align-items:center}
+.feature{position:relative;overflow:hidden;background:radial-gradient(ellipse at 22% 50%,#584128 0,transparent 55%),#141917;color:#fff;padding:96px max(24px,calc(50% - var(--cw) / 2));display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .feature .eyebrow{color:#d8bd83}
 .feature h2{font-size:clamp(32px,3.8vw,56px);font-weight:500;line-height:1.55;margin:18px 0}
 .feature .reading{font-size:17px;letter-spacing:.12em;color:#d6c7a7;margin-bottom:22px}
@@ -136,7 +137,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .feature .btn{margin-top:26px}
 
 /* ---------- chapters / product cards ---------- */
-.chapter{max-width:1160px;margin:auto;padding:80px 24px}
+.chapter{max-width:calc(var(--cw) + 48px);margin:auto;padding:80px 24px}
 .chapter-head{text-align:center;margin-bottom:36px}
 .chapter .eyebrow{color:#987535}
 .chapter h2{font-size:clamp(27px,2.9vw,42px);line-height:1.55;margin-top:10px}
@@ -163,14 +164,14 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .stocknote{font-size:13px;margin-top:22px;color:#73706b}
 
 /* ---------- eto (gold) ---------- */
-.gold-section{background:linear-gradient(135deg,#e9d29a,#f5e8c3 52%,#d7b974);padding:84px 6% 72px}
-.gold-main{display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:5%;max-width:1240px;margin:auto}
+.gold-section{background:linear-gradient(135deg,#e9d29a,#f5e8c3 52%,#d7b974);padding:84px 24px 72px}
+.gold-main{display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:48px;max-width:var(--cw);margin:auto}
 .gold-section .eyebrow{color:#725728}
 .gold-section h2{font-size:clamp(32px,3.8vw,56px);line-height:1.55;margin:14px 0 20px}
 .gold-section p{font-size:16px}
 .gold-section .btn{margin-top:24px}
 .gold-main img{width:100%;filter:drop-shadow(0 20px 15px #79552940)}
-.eto-row{max-width:1080px;margin:56px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.eto-row{max-width:var(--cw);margin:56px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .eto-item{display:grid;grid-template-columns:52% 1fr;gap:22px;align-items:center;background:#fffaf0e6;padding:20px 24px 20px 16px;box-shadow:0 10px 26px #79552926;text-decoration:none;border:1px solid #d9bd7c;transition:transform .2s}
 .eto-item:hover{transform:translateY(-3px)}
 .eto-item .ph{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
@@ -185,7 +186,7 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 
 /* ---------- PICK UP（独立ブロック） ---------- */
 .pickup-sec{background:linear-gradient(160deg,#0b1a36,#142c55 60%,#0b1a36);padding:84px 24px 72px}
-.pickup-inner{max-width:1120px;margin:auto}
+.pickup-inner{max-width:var(--cw);margin:auto}
 .pickup-head{text-align:center;color:#fff;margin-bottom:44px}
 .pickup-head .eyebrow{color:var(--gold);letter-spacing:.3em}
 .pickup-head h2{font-size:clamp(28px,3.2vw,44px);line-height:1.55;margin:12px 0 14px}
