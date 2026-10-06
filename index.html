@@ -340,7 +340,9 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #e48
   .feature .eyebrow{order:1;text-align:center}
   .feature h2{order:2;text-align:center;margin:-6px 0 0}
   .feature-img{order:3;grid-row:auto}
-  .feature .reading{order:4;margin-bottom:0}
+  .feature .reading{order:4;margin:-4px 0 0;text-align:center}
+  .feature > div:last-child > p br,.gold-main > div > p br{display:none}
+  .feature > div:last-child > p,.gold-main > div > p{word-break:normal;text-wrap:wrap;line-break:strict}
   .feature > div:last-child > p{order:5}
   .feature .bb-say{order:6;margin-top:0}
   .feature-img img{width:auto;max-height:300px;position:relative;left:-7%}
