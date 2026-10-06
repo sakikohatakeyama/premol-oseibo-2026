@@ -55,9 +55,9 @@ header{position:relative;height:calc(74px * var(--s,1));background:var(--deep);c
 .hero-copy{width:620px}
 .hero:before{content:none}
 .gold-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
-/* キラリン：ボタンと同じ光の帯が、FV全体をときどき横切る */
-.hero::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-45%;width:32%;z-index:4;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);animation:heroShine 6s ease-in-out infinite}
-@keyframes heroShine{0%,55%{left:-45%}100%{left:130%}}
+/* キラリン：看板の表面にツヤが走るような光。細く柔らかい光を、間をあけてすばやく1回通す（流れる商品・紙吹雪の下を通る） */
+.hero-stage::before{content:"";position:absolute;top:-20%;bottom:-20%;left:0;width:22%;z-index:0;pointer-events:none;background:linear-gradient(105deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.08) 35%,rgba(255,250,230,.42) 50%,rgba(255,255,255,.08) 65%,rgba(255,255,255,0) 100%);mix-blend-mode:soft-light;transform:translateX(-160%) skewX(-18deg);animation:heroShine 7s cubic-bezier(.45,.05,.35,1) infinite}
+@keyframes heroShine{0%,62%{transform:translateX(-160%) skewX(-18deg)}88%,100%{transform:translateX(560%) skewX(-18deg)}}
 
 .hero-copy{position:relative;z-index:2}
 .hero-art{z-index:1}
@@ -392,11 +392,11 @@ html.js .hero.loaded .ld{opacity:1;transform:none}
 .product .ph img,.choice img,.eto-item .ph img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .product:hover .ph img,.choice:hover img,.eto-item:hover .ph img{transform:translateY(-6px) scale(1.03)}
 .parallax{will-change:transform}
-@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ld{opacity:1!important;transform:none!important;filter:none!important}.track,.shine::before,.hero::after{animation:none}.sweep::after{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ld{opacity:1!important;transform:none!important;filter:none!important}.track,.shine::before,.hero-stage::before{animation:none}.sweep::after{transform:scaleX(1)}}
 /* PC：看板画像（pc-fv.jpg）を背景に、右側の空いた部分で商品を流す。文字は画像に含まれるため、HTMLの文字は読み上げ・検索用に非表示で残す */
 @media(min-width:761px){
   .hero{height:calc(594px * var(--s,1))}
-  .hero-stage{height:594px;padding:0;background:url(img/pc-fv-gift.jpg) center/100% 100% no-repeat}
+  .hero-stage{height:594px;padding:0;background:url(img/pc-fv-gift2.jpg) center/100% 100% no-repeat}
   .hero-beer,.hero-en,.vertical{display:none}
   .hero-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .hero-art{top:0;bottom:0;right:auto;left:1040px;width:236px}
