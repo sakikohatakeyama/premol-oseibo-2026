@@ -495,6 +495,16 @@ h2 .po{margin-left:-.5em}
 .eto-cans img:first-child{transform:rotate(-4deg)}
 .eto-cans img:last-child{transform:rotate(4deg)}
 @media(max-width:760px){.gold-main > .eto-cans{order:3}.eto-cans img{width:38%}}
+/* クーポン */
+.coupon{background:#fff;padding:44px 24px 8px;text-align:center}
+.coupon a{display:block;max-width:var(--cw);margin:auto;border-radius:10px;overflow:hidden;box-shadow:0 12px 28px #10244326;transition:transform .2s,box-shadow .2s}
+.coupon a:hover{transform:translateY(-3px);box-shadow:0 18px 36px #10244333}
+.coupon img{display:block;width:100%;height:auto}
+.coupon p{margin:12px 0 0;font-size:13px;color:#6b7180}
+@media(max-width:760px){.coupon{padding:28px 16px 4px}.coupon p{font-size:12px}}
+/* PICK UP：横長の切り抜き画像も枠に収める */
+.pickup .ph.cut img{width:92%;height:auto;max-height:92%}
+@media(max-width:760px){.pickup .ph.cut{aspect-ratio:auto;padding:10px 0}.pickup .ph.cut img{max-height:none}}
 </style>
 </head>
 <body>
@@ -524,6 +534,12 @@ h2 .po{margin-left:-.5em}
 </section>
 
 <nav class="nav" aria-label="特集メニュー"><a class="hl" href="#noshi">のし・ご挨拶</a><a href="#limited">限定醸造</a><a href="#eto">干支ラベル</a><a href="#gifts">商品を選ぶ</a></nav>
+
+<!-- ===== クーポン（サントリー 対象の歳暮ギフトに使える5%OFFクーポン） ===== -->
+<section class="coupon" id="coupon">
+  <a href="https://maker-showroom.rakuten.co.jp/suntory/beer/?l-id=adsol_2481_shop_bigbossshibazaki#section5" target="_blank" rel="noopener"><img src="img/coupon-suntory-5off.jpg" width="1500" height="600" alt="サントリー 対象の歳暮ギフトアイテムに使える5%OFFクーポン（獲得・利用条件あり）"></a>
+  <p>※クーポンの獲得・利用条件は、リンク先のページでご確認ください。</p>
+</section>
 
 <!-- ===== 2. オリジナルのし（ビッグボスの強み：上部に配置） ===== -->
 <section class="noshi" id="noshi">
@@ -566,38 +582,37 @@ h2 .po{margin-left:-.5em}
     <div class="pickup-head">
       <div class="eyebrow">PICK UP</div>
       <h2>いま、イチオシの2セット。</h2>
-      <p>ビッグボスだけのオリジナル干支セットと、限定醸造をたっぷり味わうセット。</p>
+      <p>限定醸造の水泉動も入った5種セットと、12本すべてが干支デザイン缶のセット。</p>
     </div>
-  <!-- ▼ PICK UP：楽天広告の掲載商品（PM6B） -->
+  <!-- ▼ PICK UP 1：VM3S -->
   <div class="pickup">
     <span class="ribbon">PICK UP</span>
-    <div class="ph"><img src="img/pickup-pm6b.jpg" width="600" height="600" alt="プレモル 干支デザイン 2種6缶セット PM6B（お歳暮のし付きのイメージ）" loading="lazy"></div>
+    <div class="ph cut"><img src="img/item-vm3s.png" width="587" height="377" alt="プレモル 5種セット VM3S" loading="lazy"></div>
     <div>
-      <span class="lead">ビッグボスだけのオリジナルセット</span>
-      <h3>プレモル 干支デザイン<br>2種6缶セット</h3>
-      <div class="tags"><span class="tag">PM6B</span><span class="tag when">予約・2026年11月25日発売</span><span class="tag">本州送料無料</span></div>
-      <ul><li>プレミアムモルツ 干支デザイン缶 350ml × 3本</li><li>プレミアムモルツ 香るエール 干支デザイン缶 350ml × 3本</li></ul>
-      <p class="note">2027年の干支「未」をあしらった2種の迎春デザイン缶を、6缶の飲み比べに。お歳暮にも、お年賀の手土産にも。</p>
-      <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>迎春デザインの2種を、ビッグボスで6缶のオリジナル箱にしました。かさばらないので、お年賀の手土産にもちょうどいいですよ。</p></div>
-      <p class="price">2,398<small>円（税込）</small></p>
-      <div class="btn-row"><a class="btn dark buy" href="https://item.rakuten.co.jp/bigbossshibazaki/2180000000410/" target="_blank" rel="noopener">購入はこちら</a><a class="btn fav" href="https://my.bookmark.rakuten.co.jp/?func=reg&amp;svid=101&amp;shop_bid=224915&amp;iid=10034294&amp;itype=1" target="_blank" rel="noopener" aria-label="プレモル 2種6缶セット PM6Bをお気に入りに登録" title="お気に入りに登録"></a></div>
+      <span class="lead">限定醸造の水泉動入り</span>
+      <h3>プレモル 5種セット</h3>
+      <div class="tags"><span class="tag">VM3S</span><span class="tag when">予約・2026年10月27日発売</span><span class="tag">本州送料無料</span></div>
+      <ul><li>350ml × 11缶</li><li>プレモル4・香るエール3・黒2・マスターズドリーム1・水泉動1</li></ul>
+      <p class="note">いつものプレモルに、香るエール・黒・マスターズドリーム、そして限定醸造の水泉動まで。5種類を飲み比べられるセットです。</p>
+      <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>限定醸造の水泉動も入って、いつものプレモルと飲み比べできる5種セット。迷ったら、まずこれがおすすめです。</p></div>
+      <p class="price">2,966<small>円（税込）</small></p>
+      <div class="btn-row"><a class="btn dark buy" href="https://item.rakuten.co.jp/bigbossshibazaki/4901777297517/" target="_blank" rel="noopener">購入はこちら</a><a class="btn fav" href="https://my.bookmark.rakuten.co.jp/?func=reg&amp;svid=101&amp;shop_bid=224915&amp;iid=10013845&amp;itype=1" target="_blank" rel="noopener" aria-label="プレモル 5種セット VM3Sをお気に入りに登録" title="お気に入りに登録"></a></div>
     </div>
   </div>
 
-  <!-- ▼ PICK UP 2：DMD3S。商品ページURLが決まったら <div class="pickup is-soon"> を <a class="pickup" href="URL" target="_blank" rel="noopener"> に（閉じタグも </a> に）、
-         価格が決まったら .price の「◯,◯◯◯」を数字に、ボタンを <span class="btn dark">購入はこちら</span> に変更してください -->
-  <div class="pickup is-soon">
+  <!-- ▼ PICK UP 2：BPCK3S -->
+  <div class="pickup">
     <span class="ribbon">PICK UP</span>
-    <div class="ph cut"><img src="img/item-dmd3s.png" width="494" height="620" alt="「夢」マスターズドリーム ダブルセット DMD3S" loading="lazy"></div>
+    <div class="ph cut"><img src="img/item-bpck3s.png" width="540" height="353" alt="プレモル 干支デザインセット BPCK3S" loading="lazy"></div>
     <div>
-      <span class="lead">限定醸造を、いちばんたっぷり</span>
-      <h3>「夢」マスターズドリーム<br>ダブルセット</h3>
-      <div class="tags"><span class="tag">DMD3S</span><span class="tag">350ml × 10缶</span></div>
-      <ul><li>マスターズドリーム 350ml × 5本</li><li>マスターズドリーム 水泉動 350ml × 5本</li></ul>
-      <p class="note">マスターズドリームと、限定醸造の水泉動を5本ずつ。飲み比べる時間まで贈れる、ビール好きのための一箱。</p>
-      <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>このページのセットで、水泉動がいちばん多く入っているのがこれ。限定醸造をじっくり楽しんでほしい方に。</p></div>
-      <p class="price"><span class="q">◯,◯◯◯</span><small>円（税込）</small></p>
-      <span class="btn soon" aria-disabled="true">商品ページ 近日公開</span>
+      <span class="lead">12本すべてが干支デザイン缶</span>
+      <h3>プレモル 干支デザインセット</h3>
+      <div class="tags"><span class="tag">BPCK3S</span><span class="tag when">予約・2026年10月27日発売</span><span class="tag">本州送料無料</span></div>
+      <ul><li>350ml × 12缶</li><li>プレミアムモルツ 干支デザイン缶 × 12本</li></ul>
+      <p class="note">2027年の干支「未」をあしらったデザイン缶を、12本たっぷり。お歳暮にはもちろん、お年賀にもおすすめです。</p>
+      <div class="bb-say"><img src="img/bigboss-boss.png" width="240" height="240" alt="" loading="lazy"><p>12本ぜんぶが干支デザイン缶。開けた瞬間から華やかで、お歳暮にもお年賀にも喜ばれますよ。</p></div>
+      <p class="price">2,966<small>円（税込）</small></p>
+      <div class="btn-row"><a class="btn dark buy" href="https://item.rakuten.co.jp/bigbossshibazaki/4901777423923/" target="_blank" rel="noopener">購入はこちら</a><a class="btn fav" href="https://my.bookmark.rakuten.co.jp/?func=reg&amp;svid=101&amp;shop_bid=224915&amp;iid=10031645&amp;itype=1" target="_blank" rel="noopener" aria-label="プレモル 干支デザインセット BPCK3Sをお気に入りに登録" title="お気に入りに登録"></a></div>
     </div>
   </div>
 
